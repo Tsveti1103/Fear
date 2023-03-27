@@ -1,0 +1,80 @@
+  .formBox {
+    /* position: absolute;
+    top: 50%;
+    left: 50%; */
+    width: 400px;
+    padding: 40px;
+    /* transform: translate(-50%, -50%); */
+    background: rgba(0, 0, 0, .5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+    border-radius: 10px;
+}
+
+
+.formBox h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+
+.formBox .userBox {
+    position: relative;
+}
+
+.formBox .userBox input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid red;
+    outline: none;
+    background: transparent;
+    caret-color:red;
+}
+
+.formBox .userBox label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: red;
+    pointer-events: none;
+    transition: .5s;
+}
+/* .formBox .userBox input:valid, */
+.formBox .userBox input:focus{
+    border-bottom: 1px solid white;
+}
+.formBox .userBox input:valid~label,
+.formBox .userBox input:focus~label {
+    top: -20px;
+    left: 0;
+    color: white;
+    font-size: 12px;
+}
+.formBox .userBox input:valid,
+.formBox .userBox input:focus{
+    border-bottom: 1px solid white;
+}
+
+
+.btns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+
+}
+.signUpIn{
+    text-decoration: none;
+    color: red;
+    width: fit-content;
+    font-size: 1rem;
+}
+
+  

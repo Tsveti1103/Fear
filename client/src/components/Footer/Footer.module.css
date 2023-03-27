@@ -1,0 +1,32 @@
+.footer {
+  font-family: Lacquer, cursive;
+  padding: 5px 0;
+  font-size: 2.5rem;
+  background: rgba(0,0,0,0.5) 100%;
+  /* position: fixed;
+  bottom: 0; */
+  color: red;
+  text-align: center;
+  text-shadow: red 1px 0 10px;
+  min-height: 10vh;
+  width: 100vw;
+  margin-top: auto;
+  margin-top: auto;
+}
+@media (max-width:960px) {
+  .footer {
+    font-size:2rem;
+  }
+}
+
+@media (max-width:767px) {
+  .footer {
+    font-size:1.5rem;
+  }
+}
+
+@media (max-width:497px) {
+  .footer {
+    font-size:1rem;
+  }
+}

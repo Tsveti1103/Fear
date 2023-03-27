@@ -1,0 +1,80 @@
+.heading {
+    color: white;
+    font-size: 4rem;
+    text-align: center;
+    margin: 1rem;
+    font-family: Lacquer, cursive;
+    color: red;
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: fit-content;
+    padding: 0 1rem;
+    margin: 1rem auto;
+    border-radius: 1rem;
+}
+
+.content {
+    display: flex;
+    width: 80%;
+    justify-content: center;
+}
+
+
+.img {
+    width: 40%;
+    border-radius: 3rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.info {
+    color: white;
+    width: 40%;
+    font-size: 1.25rem;
+
+}
+
+.description {
+    text-align: center;
+    color: white;
+    font-size: 1rem;
+    margin: 2rem;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    text-align: center;
+}
+
+.info a {
+    text-decoration: none;
+    color: red;
+}
+
+.fears i {
+    color: red;
+    margin-left: 2rem;
+}
+.fears .green{
+    color: green;
+}
+
+
+.icons{
+    display: flex;
+    gap:1rem;
+    margin: 2rem;
+    width: 10%;
+    justify-content: space-around;
+}
+
+.icons i{
+    color: white;
+    font-size: 2rem;
+    margin-left: auto;
+}
+

@@ -1,0 +1,84 @@
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 10rem;
+    position: relative;
+    width: 100vw;
+}
+
+.card {
+    width: 300px;
+    height: 300px;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.card:hover {
+    scale: 1.5;
+    z-index: 1;
+    transition: all 0.5s linear;
+    border: 2px solid red;
+}
+
+.animals{
+    background-image: url("../../../imgs/animals.jpg");
+    left: 10%;
+}
+
+.water{
+    background-image: url("../../../imgs/water.jpg");
+    left: 25%;
+}
+
+.height{
+    background-image: url("../../../imgs/height.jpg");
+    left: 40%;
+}
+.other{
+    background-image: url("../../../imgs/speed.jpg");
+    left: 55%;
+}
+.all{
+    background-image: url("../../../imgs/other.jpg");
+    left: 70%;
+}
+.card h2 {
+    font-family: Lacquer, cursive;
+    color: red;
+    position: absolute;
+    font-size: 2rem;
+}
+
+.card .black {
+    color: white;
+}
+
+
+@media (max-width:960px){
+    .cards{
+        position: static;
+        display: block;
+        margin:auto;
+    }
+    .card{
+        position: static;
+        left: 0;
+        z-index: 0;
+        margin-bottom: 1rem;
+    }
+    .card:hover{
+        scale: 1;
+        z-index: auto;
+    }
+  }

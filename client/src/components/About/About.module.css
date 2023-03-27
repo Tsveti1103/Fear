@@ -1,0 +1,40 @@
+.container{
+    display:flex;
+    justify-content:space-around;
+    align-items: center;
+    color: white;
+    margin-top: 5rem;
+}
+.info{
+    width: 40%;
+    text-align: center;
+}
+.img{
+    width:520px;
+    height: 355px;
+    background-image:url("../../imgs/fear.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 1rem;
+
+}
+.info h2{
+    font-size:2.5rem;
+    margin-bottom:1rem;
+}
+.info p{
+    font-size: 1.5rem;
+}
+.info q{
+    font-style: italic;
+}
+.info p:not(last-child){
+    margin-bottom: 1rem;
+}
+
+@media (max-width:968px){
+    .container{
+        flex-direction: column;
+    }
+} 

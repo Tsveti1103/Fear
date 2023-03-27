@@ -1,0 +1,97 @@
+.btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    z-index: 3;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* The Modal Close Button (x) */
+.close {
+    position: absolute;
+    right: 15px;
+    top: 0;
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+}
+
+.close:hover,
+.close:focus {
+    color: #f44336;
+    cursor: pointer;
+}
+
+.modalContent {
+    position: fixed;
+    background-image: url(../../../imgs/bloodsplat2.png);
+    background-color: rgba(0, 0, 0, 0.8);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-top: 15px;
+    border-radius: 1rem;
+}
+
+.container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1rem;
+    text-align: center;
+}
+
+.container h1,
+.container p {
+    color: white;
+}
+
+.container p{
+    font-size:1.5rem;
+    width: 80%;
+}
+
+.container p b{
+    font-family: Lacquer, cursive;
+    text-transform: uppercase;
+}
+
+.cancelbtn,
+.deletebtn {
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.cancelbtn {
+    background-color: green;
+    color: black;
+    margin-right: 1rem;
+}
+
+.deletebtn {
+    background-color: red;
+}
+
+
+@media screen and (max-width: 300px) {
+
+    .cancelbtn,
+    .deletebtn {
+        width: 100%;
+    }
+}
