@@ -1,14 +1,13 @@
-import { useState } from 'react';
-
 import style from './Create.module.css'
-import styles from '../../commonStyles/Form.module.css';
-import classes from '../../commonStyles/button.module.css';
+import formStyles from '../../commonStyles/Form.module.css';
+import buttonStyles from '../../commonStyles/button.module.css';
 
 import { usePlaceContext } from '../../../contexts/PlaceContext';
+import { useForm } from '../../../hooks/useForm';
 
 export default function Create() {
     const { addFear } = usePlaceContext();
-    const [values, setValues] = useState({
+    const { values, onChangeHandler, onSubmit } = useForm({
         title: '',
         city: '',
         latitude: 0,
@@ -21,28 +20,13 @@ export default function Create() {
         fear_height: false,
         fear_animals: false,
         fear_other: false,
-    });
-    const onChangeHandler = (e) => {
-        const type = e.target.type
-        let value = e.target.value
-        if (type === 'checkbox') {
-            value = e.target.checked
-        }
-        setValues(state => ({ ...state, [e.target.name]: value }));
-    };
-    const onSubmit = (e) => {
-        addFear(e)
-        // e.preventDefault();
-        // const data = new FormData(e.target)
-        // itemService.createFear(data).then(result => {
-        //     addFear(result)
-        // });
-    };
+    }, addFear);
+    
     return (
-        <div className={styles.formBox}>
+        <div className={formStyles.formBox}>
             <h2>Create Place</h2>
             <form onSubmit={onSubmit} >
-                <div className={styles.userBox}>
+                <div className={formStyles.userBox}>
                     <input
                         type="text"
                         name="title"
@@ -53,7 +37,7 @@ export default function Create() {
                     />
                     <label htmlFor="title">Title</label>
                 </div>
-                <div className={styles.userBox}>
+                <div className={formStyles.userBox}>
                     <input
                         type="text"
                         name="city"
@@ -64,7 +48,7 @@ export default function Create() {
                     />
                     <label htmlFor="city">City</label>
                 </div>
-                <div className={styles.userBox}>
+                <div className={formStyles.userBox}>
                     <input
                         type="number"
                         name="latitude"
@@ -75,7 +59,7 @@ export default function Create() {
                     />
                     <label htmlFor="latitude">Latitude</label>
                 </div>
-                <div className={styles.userBox}>
+                <div className={formStyles.userBox}>
                     <input
                         type="number"
                         name="longitude"
@@ -86,7 +70,7 @@ export default function Create() {
                     />
                     <label htmlFor="longitude">Longitude</label>
                 </div>
-                <div className={styles.userBox}>
+                <div className={formStyles.userBox}>
                     <input
                         type="url"
                         name="website"
@@ -97,7 +81,7 @@ export default function Create() {
                     />
                     <label htmlFor="website">Website</label>
                 </div>
-                <div className={styles.userBox}>
+                <div className={formStyles.userBox}>
                     <input
                         className={style.imgBox}
                         accept="image/*"
@@ -121,7 +105,7 @@ export default function Create() {
                         checked={values.cost_free}
                     />
                 </div>
-                <div className={styles.userBox}>
+                <div className={formStyles.userBox}>
                     <textarea
                         className={style.description}
                         name="description"
@@ -178,8 +162,8 @@ export default function Create() {
                         checked={values.fear_other}
                     />
                 </div>
-                <div className={styles.btns}>
-                    <button className={classes.redBtn}>
+                <div className={formStyles.btns}>
+                    <button className={buttonStyles.redBtn}>
                         <span />
                         <span />
                         <span />

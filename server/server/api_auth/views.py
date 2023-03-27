@@ -26,6 +26,7 @@ class LoginApiView(authtoken_views.ObtainAuthToken):
             'token': token.key,
             'user_id': user.pk,
             'username': user.username,
+            'email': user.email,
         })
 
 

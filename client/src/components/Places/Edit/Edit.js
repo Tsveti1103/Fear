@@ -1,17 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import style from './Edit.module.css'
-import styles from '../../commonStyles/Form.module.css';
-import classes from '../../commonStyles/button.module.css';
+import formStyles from '../../commonStyles/Form.module.css';
+import buttonStyles from '../../commonStyles/button.module.css';
+
 import * as itemService from "../../../services/itemService";
 import { usePlaceContext } from '../../../contexts/PlaceContext';
-import { useParams } from 'react-router-dom';
-import { useFetcher } from '../../../hooks/useFetcher';
+import { useForm } from '../../../hooks/useForm';
 
 export default function Edit() {
     const { editFear } = usePlaceContext();
     const { fearId } = useParams();
-    const state = {
+    const { values, onChangeHandler, onSubmit,changeValues } = useForm({
         title: '',
         city: '',
         latitude: 0,
@@ -24,27 +25,19 @@ export default function Edit() {
         fear_height: false,
         fear_animals: false,
         fear_other: false,
-    }
-    const [values, setValues] = useFetcher(itemService.getOne(fearId), [fearId], state)
-    
-    const onChangeHandler = (e) => {
-        const type = e.target.type
-        let value = e.target.value
-        if (type === 'checkbox') {
-            value = e.target.checked
-        }
-        setValues(state => ({ ...state, [e.target.name]: value }));
-    };
+    }, editFear, fearId);
 
-    const onSubmit = (e) => {
-            editFear(e,fearId)
-        };
-        
+    useEffect(() => {
+        itemService.getOne(fearId)
+            .then(result => {
+                changeValues(result);
+            });
+    }, [fearId]); 
     return (
-        <div className={styles.formBox}>
+        <div className={formStyles.formBox}>
             <h2>Create Place</h2>
             <form onSubmit={onSubmit}>
-                <div className={styles.userBox}>
+                <div className={formStyles.userBox}>
                     <input
                         type="text"
                         name="title"
@@ -55,7 +48,7 @@ export default function Edit() {
                     />
                     <label htmlFor="title">Title</label>
                 </div>
-                <div className={styles.userBox}>
+                <div className={formStyles.userBox}>
                     <input
                         type="text"
                         name="city"
@@ -66,7 +59,7 @@ export default function Edit() {
                     />
                     <label htmlFor="city">City</label>
                 </div>
-                <div className={styles.userBox}>
+                <div className={formStyles.userBox}>
                     <input
                         type="number"
                         name="latitude"
@@ -77,7 +70,7 @@ export default function Edit() {
                     />
                     <label htmlFor="latitude">Latitude</label>
                 </div>
-                <div className={styles.userBox}>
+                <div className={formStyles.userBox}>
                     <input
                         type="number"
                         name="longitude"
@@ -88,7 +81,7 @@ export default function Edit() {
                     />
                     <label htmlFor="longitude">Longitude</label>
                 </div>
-                <div className={styles.userBox}>
+                <div className={formStyles.userBox}>
                     <input
                         type="url"
                         name="website"
@@ -124,7 +117,7 @@ export default function Edit() {
                         checked={values.cost_free}
                     />
                 </div>
-                <div className={styles.userBox}>
+                <div className={formStyles.userBox}>
                     <textarea
                         className={style.description}
                         name="description"
@@ -181,8 +174,8 @@ export default function Edit() {
                         checked={values.fear_other}
                     />
                 </div>
-                <div className={styles.btns}>
-                    <button className={classes.redBtn}>
+                <div className={formStyles.btns}>
+                    <button className={buttonStyles.redBtn}>
                         <span />
                         <span />
                         <span />

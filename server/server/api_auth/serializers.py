@@ -9,6 +9,7 @@ UserModel = get_user_model()
 
 class CreateUserSerializer(serializers.ModelSerializer):
     token = ''
+    id = ''
     class Meta:
         model = UserModel
         fields = ('username', 'email', 'password')
@@ -16,7 +17,7 @@ class CreateUserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         # create user
         user = super().create(validated_data)
-
+        self.id = user.id
         self.token = Token.objects.get_or_create(user=user)
         # Hashing the password
         user.set_password(user.password)
@@ -42,5 +43,5 @@ class CreateUserSerializer(serializers.ModelSerializer):
         # remove password from user representation
         user_representation.pop('password')
         user_representation['token'] = self.token[0].pk
-        # TODO here I can add token to response i I need
+        user_representation['user_id'] = self.id
         return user_representation

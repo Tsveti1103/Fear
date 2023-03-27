@@ -1,5 +1,6 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
+
 import { AuthProvider } from './contexts/AuthContext';
 import { PlaceProvider } from './contexts/PlaceContext';
 

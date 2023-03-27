@@ -1,29 +1,20 @@
-import styles from '../../commonStyles/Form.module.css';
-import classes from '../../commonStyles/button.module.css';
 import { Link } from 'react-router-dom';
-import { useState } from "react";
-
+import formStyles from '../../commonStyles/Form.module.css';
+import buttonStyles from '../../commonStyles/button.module.css';
 import { useAuthContext } from "../../../contexts/AuthContext";
+import { useForm } from '../../../hooks/useForm';
 
 export default function Login() {
     const { userLogin } = useAuthContext();
-    const [values, setValues] = useState({
+    const { values, onChangeHandler, onSubmit } = useForm({
         username: '',
         password: '',
-    });
-    const onChangeHandler = (e) => {
-        setValues(state => ({ ...state, [e.target.name]: e.target.value }));
-    };
-    const onSubmit = (e) => {
-        e.preventDefault();
-        const data = new FormData(e.target)
-        userLogin(data);
-    };
+    }, userLogin);
     return (
-        <div className={styles.formBox}>
+        <div className={formStyles.formBox}>
             <h2>Login</h2>
             <form onSubmit={onSubmit}>
-                <div className={styles.userBox}>
+                <div className={formStyles.userBox}>
                     <input
                         type="text"
                         name="username"
@@ -34,26 +25,26 @@ export default function Login() {
                     />
                     <label htmlFor="username">Username</label>
                 </div>
-                <div className={styles.userBox}>
+                <div className={formStyles.userBox}>
                     <input
                         type="password"
                         name="password"
                         id="password"
                         required=""
-                        alue={values.password}
+                        value={values.password}
                         onChange={onChangeHandler}
                     />
                     <label htmlFor="password">Password</label>
                 </div>
-                <div className={styles.btns}>
-                    <button type="submit" className={classes.redBtn}>
+                <div className={formStyles.btns}>
+                    <button type="submit" className={buttonStyles.redBtn}>
                         <span />
                         <span />
                         <span />
                         <span />
                         Login
                     </button>
-                    <Link to="/register" className={styles.signUpIn}>Sign Up?</Link>
+                    <Link to="/register" className={formStyles.signUpIn}>Sign Up?</Link>
                 </div>
             </form >
         </div >

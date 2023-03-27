@@ -9,7 +9,7 @@ export const PlaceProvider = ({
 }) => {
   const [fears, setFears] = useState([]);
   const navigate = useNavigate();
-  
+
   const delFears = (fearId) => {
     itemService.deleteFear(fearId).then(() => {
       setFears(state => state.map(fear => fear.id !== fearId))
@@ -18,9 +18,7 @@ export const PlaceProvider = ({
     })
   }
 
-  const addFear = (e) => {
-    e.preventDefault();
-    const data = new FormData(e.target)
+  const addFear = (data) => {
     itemService.createFear(data).then(result => {
       setFears(state => [
         ...state,
@@ -30,9 +28,7 @@ export const PlaceProvider = ({
     });
   };
 
-  const editFear = (e, fearId) => {
-    e.preventDefault();
-    const data = new FormData(e.target)
+  const editFear = (data,fearId) => {
     itemService.editFear(fearId, data).then(result => {
       setFears(state => state.map(x => x._id === fearId ? result : x));
       navigate(`/fears/${fearId}`);
