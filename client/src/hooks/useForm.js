@@ -1,6 +1,5 @@
 import { useState } from 'react';
-
-export const useForm = (initialValues, onSubmitHandler,id) => {
+export const useForm = (initialValues, onSubmitHandler, id) => {
 
     const [values, setValues] = useState(initialValues);
 
@@ -10,13 +9,18 @@ export const useForm = (initialValues, onSubmitHandler,id) => {
         if (type === 'checkbox') {
             value = e.target.checked
         }
+        else if (type === 'file') {
+            value = e.target.files[0]
+        }
         setValues(state => ({ ...state, [e.target.name]: value }));
     };
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const data = new FormData(e.target)
-        onSubmitHandler(data,id);
+        if (typeof values.image == "string") {
+            delete values.image;
+        }
+        onSubmitHandler(values, id);
         setValues(initialValues);
     };
 

@@ -35,7 +35,7 @@ export default function Edit() {
     }, [fearId]); 
     return (
         <div className={formStyles.formBox}>
-            <h2>Create Place</h2>
+            <h2>Edit Place</h2>
             <form onSubmit={onSubmit}>
                 <div className={formStyles.userBox}>
                     <input
@@ -92,7 +92,7 @@ export default function Edit() {
                     />
                     <label htmlFor="website">Website</label>
                 </div>
-                {/* <div className={styles.userBox}>
+                <div className={formStyles.userBox}>
                     <input
                         className={style.imgBox}
                         accept="image/*"
@@ -105,7 +105,7 @@ export default function Edit() {
                         onChange={onChangeHandler}
                     />
                     <label htmlFor="image">Image</label>
-                </div> */}
+                </div>
                 <div className={style.check}>
                     <label htmlFor="cost">Cost Free</label>
                     <input

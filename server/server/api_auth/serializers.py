@@ -1,4 +1,3 @@
-from django.contrib.auth.hashers import make_password
 from django.core import exceptions
 from django.contrib.auth import get_user_model, password_validation
 from rest_framework import serializers

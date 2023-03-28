@@ -31,11 +31,11 @@ class PlacesCreateSerializer(serializers.ModelSerializer):
 
 
 class PlacesEditSerializer(serializers.ModelSerializer):
-    # image_url = serializers.ImageField(required=False)
+    image = serializers.ImageField(required=False)
 
     class Meta:
         model = Places
-        exclude = ('id', 'user', 'image')
+        exclude = ('id', 'user',)
 
     def create(self, validated_data):
         validated_data['user'] = self.context['request'].user

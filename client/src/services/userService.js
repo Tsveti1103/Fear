@@ -8,10 +8,10 @@ const endpoints = {
 }
 
 export async function login(data) {
-    const {
+      const {
         username,
         password,
-    } = Object.fromEntries(data);
+    } = data;
     const result = await api.post(endpoints.login,{username, password});
     setUserData(result);
     return result;
@@ -22,8 +22,7 @@ export async function register(data) {
         username,
         email,
         password,
-        confirmPassword,
-    } = Object.fromEntries(data);
+    } = data
     const result = await api.post(endpoints.register,{username,email, password});
     return result;
 }

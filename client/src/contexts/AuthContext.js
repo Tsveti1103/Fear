@@ -16,7 +16,7 @@ export const AuthProvider = ({
         const {
             password,
             confirmPassword,
-        } = Object.fromEntries(data);
+        } = data;
         if (password !== confirmPassword) {
             console.log('Password dont mach');
             return;

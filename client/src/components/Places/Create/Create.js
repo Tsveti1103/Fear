@@ -89,7 +89,8 @@ export default function Create() {
                         name="image"
                         id="image"
                         required=""
-                        value={values.image}
+                        // value={values.image}
+                        defaultValue={values.image}
                         onChange={onChangeHandler}
                     />
                     <label htmlFor="image">Image</label>

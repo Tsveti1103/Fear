@@ -11,12 +11,18 @@ async function request(method, url, data) {
     if (token !== null) {
         options.headers['Authorization'] = `Token ${token}`;
     }
+    console.log(data);
     if (data) {
-        if (data.username){
+        if (data.username) {
             options.headers['Content-Type'] = 'application/json'
             options.body = JSON.stringify(data);
-        }else{
-            options.body=data
+        }
+        else {
+            let form_data = new FormData();
+            for (let key in data) {
+                form_data.append(key, data[key]);
+            }
+            options.body = form_data
         }
     };
     try {
