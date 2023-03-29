@@ -5,6 +5,7 @@ import { useFetcher } from '../../../hooks/useFetcher';
 import { useAuthContext } from "../../../contexts/AuthContext";
 import Delete from '../Delete/Delete';
 
+
 export default function Details() {
     const { fearId } = useParams();
     const [currentFear,setFear] = useFetcher(itemService.details(fearId), [fearId])
@@ -12,11 +13,11 @@ export default function Details() {
 
     const latitude = Number(currentFear.latitude).toFixed(6)
     const longitude = Number(currentFear.longitude).toFixed(6)
-
+    const isOwner = user.user_id === currentFear.user
     return (
         <>
             <h1 className={styles.heading}>{currentFear.title}</h1>
-            {user.user_id === currentFear.user &&
+            {isOwner &&
                 <div className={styles.icons}>
                     <Link to={`edit/`} title="Edit">
                         <i className="fa-solid fa-pen-clip"></i>

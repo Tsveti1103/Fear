@@ -24,11 +24,11 @@ export default function Edit() {
         fear_water: false,
         fear_height: false,
         fear_animals: false,
-        fear_other: false,
+        fear_other: true,
     }, editFear, fearId);
 
     useEffect(() => {
-        itemService.getOne(fearId)
+        itemService.details(fearId)
             .then(result => {
                 changeValues(result);
             });
@@ -36,7 +36,7 @@ export default function Edit() {
     return (
         <div className={formStyles.formBox}>
             <h2>Edit Place</h2>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} method="post">
                 <div className={formStyles.userBox}>
                     <input
                         type="text"

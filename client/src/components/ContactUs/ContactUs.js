@@ -5,15 +5,15 @@ export default function Login() {
         <div className={styles.container}>
             <div className={styles.img}>
                 <p>
-                    <i class="fa-solid fa-location-dot"></i>
+                    <i className="fa-solid fa-location-dot"></i>
                     Sofia, Bulgaria
                 </p>
                 <p>
-                    <i class="fa-solid fa-phone"></i>
+                    <i className="fa-solid fa-phone"></i>
                     +3590000000
                 </p>
                 <p>
-                    <i class="fa-solid fa-envelope"></i>
+                    <i className="fa-solid fa-envelope"></i>
                     fear@nofear.com
                 </p>
             </div>

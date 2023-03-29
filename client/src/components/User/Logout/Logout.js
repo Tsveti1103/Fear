@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useAuthContext } from "../../../contexts/AuthContext";
@@ -11,7 +11,7 @@ export default function Logout  () {
         userService.logout()
             .then(() => {
                 userLogout();
-                navigate('/login');
+                navigate('/login', {replace: true});
             })
             .catch(() => {
                 navigate('/');

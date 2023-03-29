@@ -1,12 +1,22 @@
 import style from './Create.module.css'
 import formStyles from '../../commonStyles/Form.module.css';
 import buttonStyles from '../../commonStyles/button.module.css';
-
+import useErrors from '../../../hooks/useErorrs';
 import { usePlaceContext } from '../../../contexts/PlaceContext';
 import { useForm } from '../../../hooks/useForm';
 
 export default function Create() {
     const { addFear } = usePlaceContext();
+    const [erorrs, setErorrs, formValidate] = useErrors(
+        {
+            title: '',
+            city: '',
+            latitude: 0,
+            longitude: 0,
+            website: '',
+            description: '',
+        }
+    );
     const { values, onChangeHandler, onSubmit } = useForm({
         title: '',
         city: '',
@@ -19,13 +29,13 @@ export default function Create() {
         fear_water: false,
         fear_height: false,
         fear_animals: false,
-        fear_other: false,
+        fear_other: true,
     }, addFear);
-    
+
     return (
         <div className={formStyles.formBox}>
             <h2>Create Place</h2>
-            <form onSubmit={onSubmit} >
+            <form onSubmit={onSubmit} method="post" >
                 <div className={formStyles.userBox}>
                     <input
                         type="text"
@@ -34,9 +44,15 @@ export default function Create() {
                         required=""
                         value={values.title}
                         onChange={onChangeHandler}
+                        onBlur={formValidate}
                     />
                     <label htmlFor="title">Title</label>
                 </div>
+                {erorrs.title &&
+                    <p className={formStyles.formError}>
+                        {erorrs.title}
+                    </p>
+                }
                 <div className={formStyles.userBox}>
                     <input
                         type="text"
@@ -45,9 +61,15 @@ export default function Create() {
                         required=""
                         value={values.city}
                         onChange={onChangeHandler}
+                        onBlur={formValidate}
                     />
                     <label htmlFor="city">City</label>
                 </div>
+                {erorrs.city &&
+                    <p className={formStyles.formError}>
+                        {erorrs.city}
+                    </p>
+                }
                 <div className={formStyles.userBox}>
                     <input
                         type="number"
@@ -56,9 +78,15 @@ export default function Create() {
                         required=""
                         value={values.latitude}
                         onChange={onChangeHandler}
+                        onBlur={formValidate}
                     />
                     <label htmlFor="latitude">Latitude</label>
                 </div>
+                {erorrs.latitude &&
+                    <p className={formStyles.formError}>
+                        {erorrs.latitude}
+                    </p>
+                }
                 <div className={formStyles.userBox}>
                     <input
                         type="number"
@@ -67,9 +95,15 @@ export default function Create() {
                         required=""
                         value={values.longitude}
                         onChange={onChangeHandler}
+                        onBlur={formValidate}
                     />
                     <label htmlFor="longitude">Longitude</label>
                 </div>
+                {erorrs.longitude &&
+                    <p className={formStyles.formError}>
+                        {erorrs.longitude}
+                    </p>
+                }
                 <div className={formStyles.userBox}>
                     <input
                         type="url"

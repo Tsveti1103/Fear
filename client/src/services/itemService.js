@@ -42,7 +42,3 @@ export async function editFear(id,data){
     return api.put(endpoint.edit(id),data)
 }
 
-export async function getOne(id) {
-    return api.get(endpoint.details(id))
-    
-};

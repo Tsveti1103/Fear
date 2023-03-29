@@ -77,4 +77,8 @@
     font-size: 1rem;
 }
 
-  
+.formError{
+    color: red;
+    text-align: center;
+    margin: 1rem;
+}

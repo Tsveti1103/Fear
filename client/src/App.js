@@ -25,6 +25,9 @@ import Details from './components/Places/Details/Details';
 import Create from './components/Places/Create/Create';
 import Delete from './components/Places/Delete/Delete';
 import Edit from './components/Places/Edit/Edit';
+import RouteGuardIsAuthenticated from './components/common/RouteGuardIsAuthenticated';
+import RouteGuardIsNotAuthenticated from './components/common/RouteGuardIsNotAuthenticated';
+import RouteGuardIsOwner from './components/common/RouteGuardIsOwner';
 
 
 
@@ -32,8 +35,8 @@ import Edit from './components/Places/Edit/Edit';
 function App() {
   return (
     <>
-      <PlaceProvider >
-        <AuthProvider>
+      <AuthProvider>
+        <PlaceProvider >
           <Navigation />
           <main className="main">
             <Routes>
@@ -47,20 +50,28 @@ function App() {
               <Route path="/fears/water" element={<Water />} />
               <Route path="/fears/animals" element={<Animals />} />
               <Route path="/fears/height" element={<Height />} />
-              <Route path="/fears/:fearId" element={<Details />} />
-              <Route path="/create" element={<Create />} />
-              <Route path="/fears/:fearId/delete" element={<Delete />} />
-              <Route path="/fears/:fearId/edit" element={<Edit />} />
 
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/logout" element={<Logout />} />
-              <Route path="/register" element={<Register />} />
+              <Route element={<RouteGuardIsAuthenticated />}>
+                <Route path="/fears/:fearId" element={<Details />} />
+                <Route path="/create" element={<Create />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/logout" element={<Logout />} />
+              </Route>
+
+              <Route element={<RouteGuardIsNotAuthenticated />}>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+
+              </Route>
+              <Route element={<RouteGuardIsOwner />}>
+                <Route path="/fears/:fearId/delete" element={<Delete />} />
+                <Route path="/fears/:fearId/edit" element={<Edit />} />
+              </Route>
             </Routes>
           </main>
           <Footer />
-        </AuthProvider>
-      </PlaceProvider>
+        </PlaceProvider>
+      </AuthProvider>
     </>
   );
 }

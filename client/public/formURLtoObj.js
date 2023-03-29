@@ -1,5 +1,5 @@
 // useEffect(() => {
-//     itemService.getOne(fearId)
+//     itemService.details(fearId)
 //         .then(result => {
             // let name = (result.image).replace('http://localhost:8000/media/places/', '')
             // const urlToObject = async () => {

@@ -11,7 +11,6 @@ async function request(method, url, data) {
     if (token !== null) {
         options.headers['Authorization'] = `Token ${token}`;
     }
-    console.log(data);
     if (data) {
         if (data.username) {
             options.headers['Content-Type'] = 'application/json'

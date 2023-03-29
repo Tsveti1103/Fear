@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import  useLocalStorage  from "../hooks/useLocalStorage";
+import useLocalStorage from "../hooks/useLocalStorage";
 import * as userService from "../services/userService";
 
 export const AuthContext = createContext();
@@ -10,9 +10,11 @@ export const AuthProvider = ({
     children,
 }) => {
     const navigate = useNavigate();
-    const [user, setUser] = useLocalStorage('user', {});
-  
-    const registerUser = async(data) => {
+    const [user, setUser] = useLocalStorage();
+    let isAuthenticated;
+    { user ? isAuthenticated = true : isAuthenticated = false };
+
+    const registerUser = async (data) => {
         const {
             password,
             confirmPassword,
@@ -22,33 +24,34 @@ export const AuthProvider = ({
             return;
             // TODO return error
         }
-        try{
+        try {
             const result = await userService.register(data)
             setUser(result);
             navigate('/fears');
-        }catch(err){
+        } catch (err) {
             console.log(err.message);
         }
     }
-    const userLogin = async(data) => {
-        try{
-            const result = await  userService.login(data)
+    const userLogin = async (data) => {
+        try {
+            const result = await userService.login(data)
             setUser(result);
-            navigate('/fears');
+            navigate(-1, { replace: true });
         }
-        catch(err){
+        catch (err) {
             console.log(err.message);
         }
-      };
-      const userLogout = () => {
+    };
+    const userLogout = () => {
         setUser();
-      };
-      const contextValues = {
+    };
+    const contextValues = {
         userLogin,
         userLogout,
         registerUser,
         user,
-      }
+        isAuthenticated,
+    }
     return (
         <>
             <AuthContext.Provider value={contextValues}>

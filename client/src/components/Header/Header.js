@@ -1,6 +1,8 @@
 import styles from './Header.module.css';
+import simpleStyles from '../commonStyles/simpleButton.module.css';
 import { Link } from 'react-router-dom';
-import {  useAuthContext } from "../../contexts/AuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
+
 export default function Navigation() {
 	const { user } = useAuthContext();
 	return (
@@ -15,17 +17,21 @@ export default function Navigation() {
 					<li><Link to="/fears">Catalog</Link></li>
 					<li><Link to="/about">About</Link></li>
 					<li><Link to="/contactus">Contact Us</Link></li>
-					<li><Link to="/profile">Profile</Link></li>
-					<li><Link to="/create">Create</Link></li>
+					{user &&
+						<li><Link to="/profile">Profile</Link></li>
+					}
+					{user &&
+						<li><Link to="/create">Create</Link></li>
+					}
 				</ul>
 				{user ?
 					<div className={styles.right}>
-						<Link to="/logout">Logout</Link>
+						<Link className={simpleStyles.simple} to="/logout">Logout</Link>
 					</div>
 					:
 					<div className={styles.right}>
-						<Link to="/login">Login</Link>
-						<Link to="/register">Register</Link>
+						<Link className={simpleStyles.simple} to="/login">Login</Link>
+						<Link className={simpleStyles.simple} to="/register">Register</Link>
 					</div>
 
 				}

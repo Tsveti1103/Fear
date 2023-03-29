@@ -1,15 +1,19 @@
 from django.contrib.auth.models import PermissionsMixin, AbstractBaseUser, UserManager
+from django.core.validators import MinLengthValidator
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
 class AppUser(AbstractBaseUser, PermissionsMixin):
+    USERNAME_MAX_LENGTH = 30
+    USERNAME_MIN_LENGTH = 3
     username = models.CharField(
-        max_length=150,
+        max_length=USERNAME_MAX_LENGTH,
         unique=True,
         error_messages={
             'unique': ("A user with that username already exists."),
         },
+        validators=[MinLengthValidator(USERNAME_MIN_LENGTH)]
     )
     email = models.EmailField(
     )
