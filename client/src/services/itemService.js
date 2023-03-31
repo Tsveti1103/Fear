@@ -9,36 +9,33 @@ const endpoint = {
     details: (placeId)=> `/places/details/${placeId}`,
     delete: (placeId)=> `/places/delete/${placeId}`,
     edit: (placeId)=> `/places/edit/${placeId}`,
-}
+};
 
 export async function getAllFears(){
-    return api.get(endpoint.fears)
-}
+    return await api.get(endpoint.fears)
+};
 export async function getAnimals(){
-    return api.get(endpoint.animals)
-}
+    return await api.get(endpoint.animals)
+};
 export async function getWater(){
-    return api.get(endpoint.water)
-}
+    return await api.get(endpoint.water)
+};
 export async function getHeight(){
-    return api.get(endpoint.height)
-}
+    return await api.get(endpoint.height)
+};
 export async function getOther(){
-    return api.get(endpoint.other)
-}
-export async function createFear(data){
-    return api.post(endpoint.create,data)
-}
-
+    return await api.get(endpoint.other)
+};
 export async function details(id){
-    return api.get(endpoint.details(id))
-}
-
-export async function deleteFear(id){
-    return api.del(endpoint.delete(id))
-}
-
+    return await api.get(endpoint.details(id))
+};
+export async function createFear(data){
+    return await api.post(endpoint.create,data)
+};
 export async function editFear(id,data){
-    return api.put(endpoint.edit(id),data)
-}
+    return await api.put(endpoint.edit(id),data)
+};
+export function deleteFear(id){
+    return api.del(endpoint.delete(id))
+};
 

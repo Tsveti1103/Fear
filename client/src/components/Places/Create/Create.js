@@ -4,20 +4,11 @@ import buttonStyles from '../../commonStyles/button.module.css';
 import useErrors from '../../../hooks/useErorrs';
 import { usePlaceContext } from '../../../contexts/PlaceContext';
 import { useForm } from '../../../hooks/useForm';
+import { formIsValid } from '../../../services/utils';
 
 export default function Create() {
     const { addFear } = usePlaceContext();
-    const [erorrs, setErorrs, formValidate] = useErrors(
-        {
-            title: '',
-            city: '',
-            latitude: 0,
-            longitude: 0,
-            website: '',
-            description: '',
-        }
-    );
-    const { values, onChangeHandler, onSubmit } = useForm({
+    const { values, onChangeHandler, onSubmit, serverErrors } = useForm({
         title: '',
         city: '',
         latitude: 0,
@@ -32,6 +23,18 @@ export default function Create() {
         fear_other: true,
     }, addFear);
 
+    const [formErrors, formValidate] = useErrors(
+        {
+            title: '',
+            city: '',
+            latitude: '',
+            longitude: '',
+            website: '',
+            description: '',
+            image: 'Please choose an image',
+        }
+    );
+    let isValid = formIsValid(formErrors)
     return (
         <div className={formStyles.formBox}>
             <h2>Create Place</h2>
@@ -41,33 +44,33 @@ export default function Create() {
                         type="text"
                         name="title"
                         id="title"
-                        required=""
+                        required
                         value={values.title}
                         onChange={onChangeHandler}
                         onBlur={formValidate}
                     />
                     <label htmlFor="title">Title</label>
                 </div>
-                {erorrs.title &&
+                {formErrors.title &&
                     <p className={formStyles.formError}>
-                        {erorrs.title}
+                        {formErrors.title}
                     </p>
                 }
-                <div className={formStyles.userBox}>
+                <div className={formStyles.userBox} >
                     <input
                         type="text"
                         name="city"
                         id="city"
-                        required=""
+                        required
                         value={values.city}
                         onChange={onChangeHandler}
                         onBlur={formValidate}
                     />
                     <label htmlFor="city">City</label>
                 </div>
-                {erorrs.city &&
+                {formErrors.city &&
                     <p className={formStyles.formError}>
-                        {erorrs.city}
+                        {formErrors.city}
                     </p>
                 }
                 <div className={formStyles.userBox}>
@@ -75,16 +78,16 @@ export default function Create() {
                         type="number"
                         name="latitude"
                         id="latitude"
-                        required=""
+                        required
                         value={values.latitude}
                         onChange={onChangeHandler}
                         onBlur={formValidate}
                     />
                     <label htmlFor="latitude">Latitude</label>
                 </div>
-                {erorrs.latitude &&
+                {formErrors.latitude &&
                     <p className={formStyles.formError}>
-                        {erorrs.latitude}
+                        {formErrors.latitude}
                     </p>
                 }
                 <div className={formStyles.userBox}>
@@ -92,29 +95,35 @@ export default function Create() {
                         type="number"
                         name="longitude"
                         id="longitude"
-                        required=""
+                        required
                         value={values.longitude}
                         onChange={onChangeHandler}
                         onBlur={formValidate}
                     />
                     <label htmlFor="longitude">Longitude</label>
                 </div>
-                {erorrs.longitude &&
+                {formErrors.longitude &&
                     <p className={formStyles.formError}>
-                        {erorrs.longitude}
+                        {formErrors.longitude}
                     </p>
                 }
-                <div className={formStyles.userBox}>
+                <div className={formStyles.userBox} >
                     <input
                         type="url"
                         name="website"
                         id="website"
-                        required=""
+                        required
                         value={values.website}
                         onChange={onChangeHandler}
+                        onBlur={formValidate}
                     />
                     <label htmlFor="website">Website</label>
                 </div>
+                {formErrors.website &&
+                    <p className={formStyles.formError}>
+                        {formErrors.website}
+                    </p>
+                }
                 <div className={formStyles.userBox}>
                     <input
                         className={style.imgBox}
@@ -122,13 +131,18 @@ export default function Create() {
                         type="file"
                         name="image"
                         id="image"
-                        required=""
-                        // value={values.image}
+                        required
                         defaultValue={values.image}
                         onChange={onChangeHandler}
+                        onBlur={formValidate}
                     />
                     <label htmlFor="image">Image</label>
                 </div>
+                {formErrors.image &&
+                    <p className={formStyles.formError}>
+                        {formErrors.image}
+                    </p>
+                }
                 <div className={style.check}>
                     <label htmlFor="cost">Cost Free</label>
                     <input
@@ -145,12 +159,18 @@ export default function Create() {
                         className={style.description}
                         name="description"
                         id="description"
-                        required=""
+                        required
                         value={values.description}
                         onChange={onChangeHandler}
+                        onBlur={formValidate}
                     />
                     <label htmlFor="description" >Description</label>
                 </div>
+                {formErrors.description &&
+                    <p className={formStyles.formError}>
+                        {formErrors.description}
+                    </p>
+                }
                 <p className={style.paragraf}>Fears</p>
 
                 <div className={style.check}>
@@ -197,8 +217,9 @@ export default function Create() {
                         checked={values.fear_other}
                     />
                 </div>
+                {serverErrors? serverErrors.map(err => <p key={err} className={formStyles.formError}>{err}</p> ): <></>}
                 <div className={formStyles.btns}>
-                    <button className={buttonStyles.redBtn}>
+                    <button className={buttonStyles.redBtn} disabled={!isValid}>
                         <span />
                         <span />
                         <span />

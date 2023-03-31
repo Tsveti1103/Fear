@@ -12,26 +12,23 @@ export const AuthProvider = ({
     const navigate = useNavigate();
     const [user, setUser] = useLocalStorage();
     let isAuthenticated;
-    { user ? isAuthenticated = true : isAuthenticated = false };
-
-    const registerUser = async (data) => {
-        const {
-            password,
-            confirmPassword,
-        } = data;
-        if (password !== confirmPassword) {
-            console.log('Password dont mach');
-            return;
-            // TODO return error
+     user ? isAuthenticated = true : isAuthenticated = false;
+        const registerUser = async (data) => {
+            const {
+                password,
+                confirmPassword,
+            } = data;
+    
+            try {
+                const result = await userService.register(data)
+                setUser(result);
+                navigate('/fears');
+            }
+            catch (err) {
+                throw err;
+            }
         }
-        try {
-            const result = await userService.register(data)
-            setUser(result);
-            navigate('/fears');
-        } catch (err) {
-            console.log(err.message);
-        }
-    }
+        
     const userLogin = async (data) => {
         try {
             const result = await userService.login(data)
@@ -39,7 +36,7 @@ export const AuthProvider = ({
             navigate(-1, { replace: true });
         }
         catch (err) {
-            console.log(err.message);
+            throw err;
         }
     };
     const userLogout = () => {

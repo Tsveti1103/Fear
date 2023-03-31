@@ -31,7 +31,7 @@ async function request(method, url, data) {
                 clearUserData()
             }
             const error = await response.json();
-            throw new Error(error.message);
+            throw error
         }
         if (response.status === 204) {
             return response;
@@ -39,8 +39,6 @@ async function request(method, url, data) {
             return response.json();
         }
     } catch (err) {
-        // alert(err.message);
-        console.log(err.message);
         throw err;
     }
 }

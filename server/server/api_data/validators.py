@@ -12,5 +12,5 @@ def only_letters_validator(value, message):
 class OptionalSchemeURLValidator(validators.URLValidator):
     def __call__(self, value):
         if '://' not in value:
-            value = 'http://' + value
+            value = 'https://' + value
         super(OptionalSchemeURLValidator, self).__call__(value)

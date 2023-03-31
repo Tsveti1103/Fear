@@ -21,10 +21,17 @@ class PlacesDetailsSerializer(serializers.ModelSerializer):
 class PlacesCreateSerializer(serializers.ModelSerializer):
     # image_url = serializers.ImageField(required=False)
 
+
     class Meta:
         model = Places
         exclude = ('id', 'user')
-
+        validators = [
+            serializers.UniqueTogetherValidator(
+                queryset=model.objects.all(),
+                fields=('longitude', 'latitude'),
+                message="There is already a place at these coordinates."
+            )
+        ]
     def create(self, validated_data):
         validated_data['user'] = self.context['request'].user
         return super().create(validated_data)

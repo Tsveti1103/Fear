@@ -74,9 +74,3 @@ class Places(models.Model):
 
     class Meta:
         unique_together = ['longitude', 'latitude']
-
-    def unique_error_message(self, model_class, unique_check):
-        if model_class == type(self) and unique_check == ('longitude', 'latitude'):
-            return 'There is already a place at these coordinates'
-        else:
-            return super(Places, self).unique_error_message(model_class, unique_check)

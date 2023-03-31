@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { serverErrorTranslator } from '../services/utils';
 export const useForm = (initialValues, onSubmitHandler, id) => {
-
     const [values, setValues] = useState(initialValues);
+    const [serverErrors, setServerErrors] = useState([]);
 
     const onChangeHandler = (e) => {
         const type = e.target.type
@@ -20,12 +21,18 @@ export const useForm = (initialValues, onSubmitHandler, id) => {
         if (typeof values.image == "string") {
             delete values.image;
         }
-        onSubmitHandler(values, id);
-        setValues(initialValues);
+        onSubmitHandler(values, id)
+            .then()
+            .catch((err) => {
+                setServerErrors([])
+                for (let value of Object.values(err)) {
+                    value = serverErrorTranslator(value)
+                    setServerErrors(state => ([...state, value]))
+                }
+            })
     };
 
     const changeValues = (newValues) => {
-        // TODO: Validate newValues shape (like initialValues)
         setValues(newValues);
     };
 
@@ -34,5 +41,6 @@ export const useForm = (initialValues, onSubmitHandler, id) => {
         onChangeHandler,
         onSubmit,
         changeValues,
+        serverErrors,
     };
 };

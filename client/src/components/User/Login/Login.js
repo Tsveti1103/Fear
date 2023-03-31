@@ -3,13 +3,24 @@ import formStyles from '../../commonStyles/Form.module.css';
 import buttonStyles from '../../commonStyles/button.module.css';
 import { useAuthContext } from "../../../contexts/AuthContext";
 import { useForm } from '../../../hooks/useForm';
+import useErrors from '../../../hooks/useErorrs';
+import { formIsValid } from '../../../services/utils';
 
 export default function Login() {
     const { userLogin } = useAuthContext();
-    const { values, onChangeHandler, onSubmit } = useForm({
+
+    const { values, onChangeHandler, onSubmit, serverErrors } = useForm({
         username: '',
         password: '',
     }, userLogin);
+
+    const [formErrors, formValidate] = useErrors(
+        {
+            username: '',
+            password: '',
+        }
+    );
+    let isValid = formIsValid(formErrors)
     return (
         <div className={formStyles.formBox}>
             <h2>Login</h2>
@@ -22,9 +33,15 @@ export default function Login() {
                         required=""
                         value={values.username}
                         onChange={onChangeHandler}
+                        onBlur={formValidate}
                     />
                     <label htmlFor="username">Username</label>
                 </div>
+                {formErrors.username &&
+                    <p className={formStyles.formError}>
+                        {formErrors.username}
+                    </p>
+                }
                 <div className={formStyles.userBox}>
                     <input
                         type="password"
@@ -33,11 +50,20 @@ export default function Login() {
                         required=""
                         value={values.password}
                         onChange={onChangeHandler}
+                        onBlur={formValidate}
                     />
                     <label htmlFor="password">Password</label>
                 </div>
+                {formErrors.password &&
+                    <p className={formStyles.formError}>
+                        {formErrors.password}
+                    </p>
+                }
+                {serverErrors &&
+                    <p className={formStyles.formError}>{serverErrors}</p>
+                }
                 <div className={formStyles.btns}>
-                    <button type="submit" className={buttonStyles.redBtn}>
+                    <button type="submit" className={buttonStyles.redBtn} disabled={!isValid}>
                         <span />
                         <span />
                         <span />

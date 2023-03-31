@@ -1,9 +1,8 @@
-from django.contrib.auth import get_user_model, authenticate
+from django.contrib.auth import get_user_model
 from rest_framework import generics as rest_generic_views, views as rest_views
 from rest_framework.authtoken import views as authtoken_views
 from rest_framework.authtoken import models as authtoken_models
 from rest_framework.response import Response
-from django.contrib.auth import login
 from server.api_auth.serializers import CreateUserSerializer
 
 UserModel = get_user_model()

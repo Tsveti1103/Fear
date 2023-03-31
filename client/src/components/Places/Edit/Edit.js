@@ -8,11 +8,13 @@ import buttonStyles from '../../commonStyles/button.module.css';
 import * as itemService from "../../../services/itemService";
 import { usePlaceContext } from '../../../contexts/PlaceContext';
 import { useForm } from '../../../hooks/useForm';
+import { formIsValid } from '../../../services/utils';
+import useErrors from '../../../hooks/useErorrs';
 
 export default function Edit() {
     const { editFear } = usePlaceContext();
     const { fearId } = useParams();
-    const { values, onChangeHandler, onSubmit,changeValues } = useForm({
+    const { values, onChangeHandler, onSubmit,changeValues, serverErrors } = useForm({
         title: '',
         city: '',
         latitude: 0,
@@ -27,12 +29,23 @@ export default function Edit() {
         fear_other: true,
     }, editFear, fearId);
 
+    const [formErrors, formValidate] = useErrors(
+        {
+            title: '',
+            city: '',
+            latitude: '',
+            longitude: '',
+            website: '',
+            description: '',
+        }
+    );
     useEffect(() => {
         itemService.details(fearId)
             .then(result => {
                 changeValues(result);
             });
     }, [fearId]); 
+    let isValid = formIsValid(formErrors)
     return (
         <div className={formStyles.formBox}>
             <h2>Edit Place</h2>
@@ -45,9 +58,15 @@ export default function Edit() {
                         required=""
                         value={values.title}
                         onChange={onChangeHandler}
+                        onBlur={formValidate}
                     />
                     <label htmlFor="title">Title</label>
                 </div>
+                {formErrors.title &&
+                    <p className={formStyles.formError}>
+                        {formErrors.title}
+                    </p>
+                }
                 <div className={formStyles.userBox}>
                     <input
                         type="text"
@@ -56,9 +75,15 @@ export default function Edit() {
                         required=""
                         value={values.city}
                         onChange={onChangeHandler}
+                        onBlur={formValidate}
                     />
                     <label htmlFor="city">City</label>
                 </div>
+                {formErrors.city &&
+                    <p className={formStyles.formError}>
+                        {formErrors.city}
+                    </p>
+                }
                 <div className={formStyles.userBox}>
                     <input
                         type="number"
@@ -67,9 +92,15 @@ export default function Edit() {
                         required=""
                         value={values.latitude}
                         onChange={onChangeHandler}
+                        onBlur={formValidate}
                     />
                     <label htmlFor="latitude">Latitude</label>
                 </div>
+                {formErrors.latitude &&
+                    <p className={formStyles.formError}>
+                        {formErrors.latitude}
+                    </p>
+                }
                 <div className={formStyles.userBox}>
                     <input
                         type="number"
@@ -78,9 +109,15 @@ export default function Edit() {
                         required=""
                         value={values.longitude}
                         onChange={onChangeHandler}
+                        onBlur={formValidate}
                     />
                     <label htmlFor="longitude">Longitude</label>
                 </div>
+                {formErrors.longitude &&
+                    <p className={formStyles.formError}>
+                        {formErrors.longitude}
+                    </p>
+                }
                 <div className={formStyles.userBox}>
                     <input
                         type="url"
@@ -89,9 +126,15 @@ export default function Edit() {
                         required=""
                         value={values.website}
                         onChange={onChangeHandler}
+                        onBlur={formValidate}
                     />
                     <label htmlFor="website">Website</label>
                 </div>
+                {formErrors.website &&
+                    <p className={formStyles.formError}>
+                        {formErrors.website}
+                    </p>
+                }
                 <div className={formStyles.userBox}>
                     <input
                         className={style.imgBox}
@@ -101,7 +144,6 @@ export default function Edit() {
                         id="image"
                         required=""
                         defaultValue={values.image}
-                        // value={values.image}
                         onChange={onChangeHandler}
                     />
                     <label htmlFor="image">Image</label>
@@ -125,9 +167,15 @@ export default function Edit() {
                         required=""
                         value={values.description}
                         onChange={onChangeHandler}
+                        onBlur={formValidate}
                     />
                     <label htmlFor="description" >Description</label>
                 </div>
+                {formErrors.description &&
+                    <p className={formStyles.formError}>
+                        {formErrors.description}
+                    </p>
+                }
                 <p className={style.paragraf}>Fears</p>
 
                 <div className={style.check}>
@@ -174,8 +222,9 @@ export default function Edit() {
                         checked={values.fear_other}
                     />
                 </div>
+                {serverErrors? serverErrors.map(err => <p key={err} className={formStyles.formError}>{err}</p> ): <></>}
                 <div className={formStyles.btns}>
-                    <button className={buttonStyles.redBtn}>
+                    <button className={buttonStyles.redBtn} disabled={!isValid}>
                         <span />
                         <span />
                         <span />
