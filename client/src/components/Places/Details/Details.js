@@ -1,7 +1,7 @@
 import styles from './Details.module.css';
 import { Link, useParams } from 'react-router-dom';
 import * as itemService from "../../../services/itemService";
-import { useFetcher } from '../../../hooks/useFetcher';
+import useFetcher from '../../../hooks/useFetcher';
 import { useAuthContext } from "../../../contexts/AuthContext";
 import Delete from '../Delete/Delete';
 

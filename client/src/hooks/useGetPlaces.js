@@ -1,6 +1,6 @@
 import Card from '../components/Places/Card/Card';
 import styles from '../components/commonStyles/AllPlaces.module.css';
-import { useFetcher } from './useFetcher';
+import useFetcher from './useFetcher';
 
 
 export function useGetPlaces(response,dep) {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useFetcher(response,dep,state=[]){
+export default function useFetcher(response,dep,state=[]){
     const [data, setData] = useState(state);
     useEffect(() => {
         response
