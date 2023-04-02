@@ -68,6 +68,11 @@ class Places(models.Model):
         on_delete=models.SET_NULL,
         null=True,
     )
+    likes = models.ManyToManyField(
+        UserModel,
+        blank=True,
+        related_name='likes'
+    )
 
     def __str__(self):
         return self.title

@@ -1,9 +1,10 @@
-from rest_framework import generics as rest_generic_views, permissions
+from rest_framework import generics as rest_generic_views, permissions, serializers
 from rest_framework.parsers import MultiPartParser, FormParser
-
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from server.api_data.models import Places
 from server.api_data.serializers import PlacesCreateSerializer, PlacesListSerializer, PlacesDetailsSerializer, \
-    PlacesEditSerializer
+    PlacesEditSerializer, LikesSerializer
 
 
 class CreatePlaceApiView(rest_generic_views.CreateAPIView):
@@ -25,6 +26,22 @@ class EditPlaceApiView(rest_generic_views.UpdateAPIView):
     parser_classes = (MultiPartParser, FormParser)
 
 
+class AddLikeUnlikeView(rest_generic_views.UpdateAPIView):
+    queryset = Places.objects.all()
+    serializer_class = LikesSerializer
+    parser_classes = (MultiPartParser, FormParser)
+    permission_classes = [permissions.IsAuthenticated]
+
+    def put(self, request, *args, **kwargs):
+        pk = kwargs['pk']
+        place = Places.objects.get(pk=pk)
+        if place.likes.filter(pk=request.user.pk).exists():
+            place.likes.remove(request.user)
+        else:
+            place.likes.add(request.user)
+        return self.update(request, *args, **kwargs)
+
+
 class DetailsPlaceApiView(rest_generic_views.RetrieveAPIView):
     queryset = Places.objects.all()
     serializer_class = PlacesDetailsSerializer
@@ -43,11 +60,6 @@ class DetailsPlaceApiView(rest_generic_views.RetrieveAPIView):
 class ListAllPlacesApiView(rest_generic_views.ListAPIView):
     queryset = Places.objects.all()
     serializer_class = PlacesListSerializer
-
-    # only authenticated users can view this
-    # permission_classes = (
-    #     permissions.IsAuthenticated,
-    # )
 
     def get_queryset(self):
         queryset = self.queryset

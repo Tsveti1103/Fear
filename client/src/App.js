@@ -53,6 +53,7 @@ function App() {
 
               <Route element={<RouteGuardIsAuthenticated />}>
                 <Route path="/fears/:fearId" element={<Details />} />
+                {/* <Route path="/fears/:fearId/like" element={<Like />} /> */}
                 <Route path="/create" element={<Create />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/logout" element={<Logout />} />

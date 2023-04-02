@@ -78,3 +78,19 @@
     margin-left: auto;
 }
 
+.likeBtn{
+    background: transparent;
+    border: none;
+    margin: 1rem;
+}
+
+.likeBtn i{
+    color: red;
+    font-size: xx-large;
+    display: flex;
+    align-items: center;
+    gap:1rem;
+}
+.likeBtn i span{
+    font-size:1rem;
+}

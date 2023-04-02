@@ -19,9 +19,6 @@ class PlacesDetailsSerializer(serializers.ModelSerializer):
 
 
 class PlacesCreateSerializer(serializers.ModelSerializer):
-    # image_url = serializers.ImageField(required=False)
-
-
     class Meta:
         model = Places
         exclude = ('id', 'user')
@@ -32,9 +29,25 @@ class PlacesCreateSerializer(serializers.ModelSerializer):
                 message="There is already a place at these coordinates."
             )
         ]
+
     def create(self, validated_data):
         validated_data['user'] = self.context['request'].user
         return super().create(validated_data)
+
+
+class ShortUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserModel
+        fields = ('id',)
+
+
+class LikesSerializer(serializers.ModelSerializer):
+    likes = ShortUserSerializer(many=True, required=False)
+    image = serializers.ImageField(required=False)
+
+    class Meta:
+        model = Places
+        fields = '__all__'
 
 
 class PlacesEditSerializer(serializers.ModelSerializer):
@@ -42,7 +55,7 @@ class PlacesEditSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Places
-        exclude = ('id', 'user',)
+        exclude = ('id', 'user', 'likes',)
 
     def create(self, validated_data):
         validated_data['user'] = self.context['request'].user

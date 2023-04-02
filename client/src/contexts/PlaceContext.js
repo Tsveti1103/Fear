@@ -11,6 +11,14 @@ export const PlaceProvider = ({
   const [fears, setFears] = useFetcher(itemService.getAllFears(), []);
   const navigate = useNavigate();
 
+  const likeFear = async (fearId,data) => {
+    try {
+      return  await itemService.likeFear(fearId,data)
+    }
+    catch (err) {
+      throw err
+    }
+  }
   const delFears = (fearId) => {
     itemService.deleteFear(fearId).then(() => {
       setFears(state => state.map(fear => fear.id !== fearId))
@@ -55,6 +63,7 @@ export const PlaceProvider = ({
     editFear,
     delFears,
     getFear,
+    likeFear,
   }
   return (
     <>

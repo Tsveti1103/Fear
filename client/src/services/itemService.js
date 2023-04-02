@@ -9,6 +9,7 @@ const endpoint = {
     details: (placeId)=> `/places/details/${placeId}`,
     delete: (placeId)=> `/places/delete/${placeId}`,
     edit: (placeId)=> `/places/edit/${placeId}`,
+    like: (placeId)=> `/places/like/${placeId}`,
 };
 
 export async function getAllFears(){
@@ -37,5 +38,8 @@ export async function editFear(id,data){
 };
 export function deleteFear(id){
     return api.del(endpoint.delete(id))
+};
+export function likeFear(id,data){
+    return api.put(endpoint.like(id),data)
 };
 
