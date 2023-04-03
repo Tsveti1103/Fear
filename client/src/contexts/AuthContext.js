@@ -12,23 +12,18 @@ export const AuthProvider = ({
     const navigate = useNavigate();
     const [user, setUser] = useLocalStorage();
     let isAuthenticated;
-     user ? isAuthenticated = true : isAuthenticated = false;
-        const registerUser = async (data) => {
-            const {
-                password,
-                confirmPassword,
-            } = data;
-    
-            try {
-                const result = await userService.register(data)
-                setUser(result);
-                navigate('/fears');
-            }
-            catch (err) {
-                throw err;
-            }
+    user ? isAuthenticated = true : isAuthenticated = false;
+    const registerUser = async (data) => {
+        try {
+            const result = await userService.register(data)
+            setUser(result);
+            navigate('/fears');
         }
-        
+        catch (err) {
+            throw err;
+        }
+    }
+
     const userLogin = async (data) => {
         try {
             const result = await userService.login(data)
@@ -42,12 +37,20 @@ export const AuthProvider = ({
     const userLogout = () => {
         setUser();
     };
+    const userDelete = async (id) => {
+        userService.deleteUser(id)
+        document.body.classList.remove("modal-open");
+        setUser();
+        navigate('/login');
+    };
     const contextValues = {
         userLogin,
         userLogout,
         registerUser,
+        userDelete,
         user,
         isAuthenticated,
+
     }
     return (
         <>

@@ -1,7 +1,13 @@
 .cards{
     display: flex;
     flex-wrap: wrap;
-    gap:2rem;
-    margin: 10rem 2rem;
+    gap:3rem;
+    margin: auto 2rem;
     justify-content: center;
+}
+.noFears{
+    font-size:2rem;
+    color: red;
+    height: 100%;
+    margin: auto;
 }

@@ -23,7 +23,7 @@ export default function Details() {
         if (typeof currentFear.image == "string") {
             delete currentFear.image;
         }
-        likeFear(fearId,currentFear).then(
+        likeFear(currentFear,fearId).then(
             result =>{
                 let likes=[]
                 for(let i of result["likes"]){
@@ -68,7 +68,7 @@ export default function Details() {
                 <div className={styles.img} style={{ backgroundImage: `url(${currentFear.image})`}} alt="" />
             </div>
             <button onClick={onLikeFear} className={styles.likeBtn}>
-                {isLiked? <i class="fa-solid fa-heart"> <span>DISLIKE</span></i>:<i class="fa-regular fa-heart"><span>LIKE</span></i>}
+                {isLiked? <i className="fa-solid fa-heart"> <span>DISLIKE</span></i>:<i className="fa-regular fa-heart"><span>LIKE</span></i>}
             </button>
             <p className={styles.description}>{currentFear.description}</p>
         </>

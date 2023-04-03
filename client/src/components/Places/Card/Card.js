@@ -12,7 +12,6 @@ export default function Card({fear}) {
             <div className={styles.img} style={{backgroundImage :`url(${fear.image})`}} alt="" />
             <p>Description: {fear.description.split(' ').slice(0, 10).join(" ") + "..."}</p>
             {user? <Link className={simpleStyles.simple} to={`/fears/${fear.id}`} >Details</Link> : <Link to={`/login`} >Details</Link>}
-            {/* <Link to={`/fears/${fear.id}`} >Details</Link> */}
         </div>
     )
 }

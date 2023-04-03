@@ -13,6 +13,10 @@ class RegisterApiView(rest_generic_views.CreateAPIView):
     serializer_class = CreateUserSerializer
 
 
+class DeleteApiView(rest_generic_views.DestroyAPIView):
+    queryset = UserModel.objects.all()
+
+
 class LoginApiView(authtoken_views.ObtainAuthToken):
 
     def post(self, request, *args, **kwargs):

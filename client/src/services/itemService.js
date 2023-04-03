@@ -39,7 +39,7 @@ export async function editFear(id,data){
 export function deleteFear(id){
     return api.del(endpoint.delete(id))
 };
-export function likeFear(id,data){
+export function likeFear(data,id){
     return api.put(endpoint.like(id),data)
 };
 

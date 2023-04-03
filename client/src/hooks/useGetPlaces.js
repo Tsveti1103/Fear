@@ -3,11 +3,17 @@ import styles from '../components/commonStyles/AllPlaces.module.css';
 import useFetcher from './useFetcher';
 
 
-export function useGetPlaces(response,dep) {
-    const [fears,setFears] = useFetcher(response,dep)
+export function useGetPlaces(response, dep) {
+    const [fears] = useFetcher(response, dep)
     return (
-        <ul className={styles.cards}>
-            {fears?.map(fear => <Card key={fear.id} fear={fear} /> )}
-        </ul>
-        );
+        <>
+            {fears.length>0 ?
+                <ul className={styles.cards}>
+                    {fears.map(fear => <Card key={fear.id} fear={fear} />)}
+                </ul>
+                :
+                <p className={styles.noFears}>No fears created</p>
+            }
+        </>
+    );
 };

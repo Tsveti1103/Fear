@@ -9,7 +9,7 @@ UserModel = get_user_model()
 class PlacesListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Places
-        fields = ('id', 'title', 'description', 'image', 'user')
+        fields = ('id', 'title', 'description', 'image', 'user','likes')
 
 
 class PlacesDetailsSerializer(serializers.ModelSerializer):

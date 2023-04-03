@@ -4,7 +4,8 @@ import * as api from './api.js';
 const endpoints = {
     login: '/user/login/',
     register: '/user/register/',
-    logout: '/user/logout/'
+    logout: '/user/logout/',
+    del: (id)=> `/user/delete/${id}`,
 }
 
 export async function login(data) {
@@ -16,7 +17,10 @@ export async function login(data) {
     setUserData(result);
     return result;
 }
-
+export  function deleteUser(id) {
+    return api.del(endpoints.del(id));
+   
+}
 export async function register(data) {
     const {
         username,
