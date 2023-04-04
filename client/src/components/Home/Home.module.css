@@ -32,3 +32,12 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+
+.heading{
+  color: red;font-size: 4rem;
+  margin-bottom: 4rem;
+  background: rgba(0, 0, 0, 0.5);
+  font-family: Lacquer, cursive;
+  border-radius: 1rem;
+  padding:0.5rem;
+}

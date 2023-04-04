@@ -58,6 +58,10 @@ export const PlaceProvider = ({
         return fear
     }
   };
+  const getTopFears = () => {
+    return fears.sort(function (a, b) { return b.likes.length - a.likes.length; }).slice(0, 3);
+
+  }
   const userFears = (userId) => {
     let userF = []
     for (let fear of fears) {
@@ -82,6 +86,7 @@ export const PlaceProvider = ({
     likeFear,
     userFears,
     userLikedFears,
+    getTopFears,
   }
   return (
     <>

@@ -4,6 +4,7 @@ import useFetcher from './useFetcher';
 
 
 export function useGetPlaces(response, dep) {
+    console.log(response);
     const [fears] = useFetcher(response, dep)
     return (
         <>
