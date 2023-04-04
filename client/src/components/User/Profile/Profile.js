@@ -32,7 +32,7 @@ export default function Profile() {
         <div className={styles.container}>
             <div className={styles.icons}>
                 <Link to={`edit/`} title="Edit">
-                <i className="fa-solid fa-user-pen"></i>
+                    <i className="fa-solid fa-user-pen"></i>
                 </Link>
                 <Delete currentUser={user}></Delete>
             </div>

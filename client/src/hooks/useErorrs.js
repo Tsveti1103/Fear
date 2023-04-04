@@ -59,6 +59,11 @@ export default function useErrors(values, password) {
                 errors.website = 'Website must start with https:// or http://.';
             }
         }
+        if (name === 'subject') {
+            if (value.length > 30) {
+                errors.subject = 'Subject should be between 1 and 30 characters.';
+            }
+        }
         setFormErros(state => ({ ...state, ...errors }));
     };
     return [formErrors, formValidate]

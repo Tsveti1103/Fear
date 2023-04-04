@@ -26,13 +26,13 @@ export const AuthProvider = ({
 
     const userLogin = async (data) => {
         try {
-            const result = await userService.login(data)
+            const result = await userService.login(data);
             setUser(result);
             navigate(-1, { replace: true });
         }
         catch (err) {
             throw err;
-        }
+        };
     };
     const userLogout = () => {
         setUser();

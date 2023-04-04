@@ -74,3 +74,27 @@
         font-size:1rem;
     }
 }
+
+.formError{
+    color: red;
+    text-align: center;
+    margin: 1rem;
+}
+
+.modal{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    z-index: 3;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.modal h1{
+    color: red;
+    font-size: 4rem;
+}
