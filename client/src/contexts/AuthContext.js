@@ -43,15 +43,27 @@ export const AuthProvider = ({
         setUser();
         navigate('/login');
     };
+    const editUser = async (data, UserId) => {
+        try {
+          await userService.editUser(UserId, data)
+          setUser(data);
+          navigate(`/profile`);
+        }
+        catch (err) {
+          throw err
+        }
+      };
     const contextValues = {
         userLogin,
         userLogout,
         registerUser,
         userDelete,
+        editUser,
         user,
         isAuthenticated,
 
     }
+
     return (
         <>
             <AuthContext.Provider value={contextValues}>

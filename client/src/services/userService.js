@@ -2,10 +2,11 @@ import { clearUserData, setUserData } from './utils.js';
 import * as api from './api.js';
 
 const endpoints = {
-    login: '/user/login/',
-    register: '/user/register/',
-    logout: '/user/logout/',
+    login: '/user/login',
+    register: '/user/register',
+    logout: '/user/logout',
     del: (id)=> `/user/delete/${id}`,
+    edit: (id)=> `/user/update/${id}`,
 }
 
 export async function login(data) {
@@ -35,3 +36,6 @@ export async function logout() {
     api.get(endpoints.logout);
     clearUserData();
 }
+export async function editUser(id,data){
+    return await api.put(endpoints.edit(id),data)
+};

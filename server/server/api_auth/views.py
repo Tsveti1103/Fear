@@ -2,8 +2,9 @@ from django.contrib.auth import get_user_model
 from rest_framework import generics as rest_generic_views, views as rest_views
 from rest_framework.authtoken import views as authtoken_views
 from rest_framework.authtoken import models as authtoken_models
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from server.api_auth.serializers import CreateUserSerializer
+from server.api_auth.serializers import CreateUserSerializer, UpdateUserSerializer
 
 UserModel = get_user_model()
 
@@ -46,3 +47,10 @@ class LogoutApiView(rest_views.APIView):
         return Response({
             'message': 'User logged out'
         })
+
+
+class UpdateProfileView(rest_generic_views.UpdateAPIView):
+    queryset = UserModel.objects.all()
+    permission_classes = (IsAuthenticated,)
+    serializer_class = UpdateUserSerializer
+

@@ -71,7 +71,11 @@
     width: 10%;
     justify-content: space-around;
 }
-
+.icons a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
 .icons i{
     color: white;
     font-size: 2rem;

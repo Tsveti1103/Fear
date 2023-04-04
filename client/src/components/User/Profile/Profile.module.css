@@ -27,3 +27,23 @@
     width: 80%;
     padding-bottom: 5rem;
 }
+
+.icons{
+    display: flex;
+    gap:1rem;
+    margin: 2rem;
+    width: 10%;
+    justify-content: space-around;
+}
+
+.icons i{
+    color: white;
+    font-size: 2rem;
+    margin-left: auto;
+}
+
+.icons a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}

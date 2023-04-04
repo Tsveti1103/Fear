@@ -3,8 +3,9 @@ import { serverErrorTranslator } from '../services/utils';
 export const useForm = (initialValues, onSubmitHandler, id) => {
     const [values, setValues] = useState(initialValues);
     const [serverErrors, setServerErrors] = useState([]);
-
+    
     const onChangeHandler = (e) => {
+
         const type = e.target.type
         let value = e.target.value
         if (type === 'checkbox') {

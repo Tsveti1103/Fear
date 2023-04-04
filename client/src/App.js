@@ -23,11 +23,11 @@ import Height from './components/Places/HeightFears/Height';
 import Other from './components/Places/OtherFears/Other';
 import Details from './components/Places/Details/Details';
 import Create from './components/Places/Create/Create';
-import Delete from './components/Places/Delete/Delete';
 import Edit from './components/Places/Edit/Edit';
 import RouteGuardIsAuthenticated from './components/common/RouteGuardIsAuthenticated';
 import RouteGuardIsNotAuthenticated from './components/common/RouteGuardIsNotAuthenticated';
 import RouteGuardIsOwner from './components/common/RouteGuardIsOwner';
+import EditUser from './components/User/Edit/Edit';
 
 
 
@@ -53,9 +53,9 @@ function App() {
 
               <Route element={<RouteGuardIsAuthenticated />}>
                 <Route path="/fears/:fearId" element={<Details />} />
-                {/* <Route path="/fears/:fearId/like" element={<Like />} /> */}
                 <Route path="/create" element={<Create />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/profile/edit" element={<EditUser />} />
                 <Route path="/logout" element={<Logout />} />
               </Route>
 
@@ -65,7 +65,6 @@ function App() {
 
               </Route>
               <Route element={<RouteGuardIsOwner />}>
-                <Route path="/fears/:fearId/delete" element={<Delete />} />
                 <Route path="/fears/:fearId/edit" element={<Edit />} />
               </Route>
             </Routes>

@@ -9,6 +9,7 @@ UserModel = get_user_model()
 class CreateUserSerializer(serializers.ModelSerializer):
     token = ''
     id = ''
+
     class Meta:
         model = UserModel
         fields = ('username', 'email', 'password')
@@ -44,3 +45,34 @@ class CreateUserSerializer(serializers.ModelSerializer):
         user_representation['token'] = self.token[0].pk
         user_representation['user_id'] = self.id
         return user_representation
+
+
+class UpdateUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserModel
+        fields = ('username', 'email')
+
+    def validate_email(self, value):
+        user = self.context['request'].user
+        if UserModel.objects.exclude(pk=user.pk).filter(email=value).exists():
+            raise serializers.ValidationError({"email": "This email is already in use."})
+        return value
+
+    def validate_username(self, value):
+        user = self.context['request'].user
+        if UserModel.objects.exclude(pk=user.pk).filter(username=value).exists():
+            raise serializers.ValidationError({"username": "This username is already in use."})
+        return value
+
+    def update(self, instance, validated_data):
+        user = self.context['request'].user
+        if user.pk != instance.pk:
+            raise serializers.ValidationError({"authorize": "You dont have permission for this user."})
+
+        instance.email = validated_data['email']
+        instance.username = validated_data['username']
+        instance.save()
+
+        return instance
+
+

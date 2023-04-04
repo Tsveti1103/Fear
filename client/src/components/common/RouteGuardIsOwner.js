@@ -14,6 +14,5 @@ export default function RouteGuardIsOwner({
     if (currentFear && currentFear.user !== user.user_id) {
         return <Navigate to={`/fears/${fearId}`} replace />
     }
-
     return children ? children : <Outlet />
 };

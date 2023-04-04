@@ -54,14 +54,14 @@ export const PlaceProvider = ({
 
   const getFear = (fearId) => {
     for (let fear of fears) {
-      if (fear.id === fearId)
+      if (fear.id == fearId)
         return fear
     }
   };
   const userFears = (userId) => {
     let userF = []
     for (let fear of fears) {
-      if (fear.user === userId)
+      if (fear.user == userId)
         userF.push(fear)
     }
     return userF
