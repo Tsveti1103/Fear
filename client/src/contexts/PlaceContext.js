@@ -10,7 +10,10 @@ export const PlaceProvider = ({
 }) => {
   const [fears, setFears] = useFetcher(itemService.getAllFears(), []);
   const navigate = useNavigate();
-
+  const [topFears] =  useFetcher(itemService.getAllFears(), [fears],[],sortTopFears);
+  function sortTopFears(fears){
+      return fears.sort(function (a, b) { return b.likes.length - a.likes.length; }).slice(0, 3);
+  }
   const likeFear = async (data, fearId) => {
     try {
       const result = await itemService.likeFear(data, fearId)
@@ -69,6 +72,7 @@ export const PlaceProvider = ({
     getFear,
     likeFear,
     fears,
+    topFears,
   }
   return (
     <>

@@ -3,6 +3,7 @@ import * as itemService from "../services/itemService";
 import useFetcher from './useFetcher';
 
 export default function useProfile(id, fears) {
+    // TODO maybe move all this logic in PlaceContext???
     const [showCreatedFears, setShowCreatedFears] = useState(false)
     const [showLikedFears, setShowLikedFears] = useState(false)
     const [createdFears] = useFetcher(itemService.getAllFears(), [fears],[],sortCreatedFears);

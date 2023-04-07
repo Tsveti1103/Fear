@@ -13,7 +13,7 @@ export default function Profile() {
     const { fears } = usePlaceContext();
     const id = user.user_id
     const [showCreatedFears, showLikedFears, createdFears, likedFears, onShowFearsClick] = useProfile(id, fears)
-    
+
     return (
         <div className={styles.container}>
             <div className={styles.icons}>
