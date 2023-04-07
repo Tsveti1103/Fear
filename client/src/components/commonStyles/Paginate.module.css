@@ -1,0 +1,33 @@
+
+.paginationContainer{
+    color: red;
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    background-color: black;
+    padding: 0.5rem 1rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+.paginationActive{
+    border-radius: 2rem;
+    color:black;
+    background-color:red;
+    padding: 0.25rem 0.8rem;
+}
+.previousBttn,
+.nextBttn,
+.paginationListItem
+{
+    border: solid 1px black ;
+    border-radius: 2rem;
+    padding: 0.25rem 0.8rem;
+}
+.previousBttn:hover,
+.nextBttn:hover,
+.paginationListItem:hover
+{
+    cursor: pointer;
+    border: solid 1px red;
+}

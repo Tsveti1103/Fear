@@ -24,8 +24,11 @@
 .userFears{
     border: 1px solid red;
     border-radius:1rem;
-    width: 80%;
+    width: 86%;
+    align-items: center;
     padding-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .icons{

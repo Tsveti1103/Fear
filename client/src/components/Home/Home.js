@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import { usePlaceContext } from '../../contexts/PlaceContext';
 import { useAuthContext } from '../../contexts/AuthContext';
 import Card from '../Places/Card/Card';
+
 export default function Home() {
     const { getTopFears } = usePlaceContext();
-    let topFears = getTopFears();
     const { user } = useAuthContext();
+    let topFears = getTopFears();
     return (
         <>
             {user ?

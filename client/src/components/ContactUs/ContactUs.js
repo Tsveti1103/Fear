@@ -33,8 +33,8 @@ export default function ContactUs() {
             subject: '',
             message: '',
         });
-    const navigate = useNavigate();
 
+    const navigate = useNavigate();
     let isValid = formIsValid(formErrors)
     return (
         <div className={styles.container}>

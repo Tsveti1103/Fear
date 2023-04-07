@@ -13,7 +13,9 @@ export const PlaceProvider = ({
 
   const likeFear = async (data, fearId) => {
     try {
-      return await itemService.likeFear(data, fearId)
+      const result = await itemService.likeFear(data, fearId)
+      setFears(state => state.map(x => x._id === fearId ? result : x))
+      return result
     }
     catch (err) {
       throw err
@@ -60,33 +62,16 @@ export const PlaceProvider = ({
   };
   const getTopFears = () => {
     return fears.sort(function (a, b) { return b.likes.length - a.likes.length; }).slice(0, 3);
+  }
 
-  }
-  const userFears = (userId) => {
-    let userF = []
-    for (let fear of fears) {
-      if (fear.user == userId)
-        userF.push(fear)
-    }
-    return userF
-  }
-  const userLikedFears = (userId) => {
-    let userF = []
-    for (let fear of fears) {
-      if (fear.likes.includes(userId))
-        userF.push(fear)
-    }
-    return userF
-  }
   const contextValues = {
     addFear,
     editFear,
     delFears,
     getFear,
     likeFear,
-    userFears,
-    userLikedFears,
     getTopFears,
+    fears,
   }
   return (
     <>

@@ -3,6 +3,7 @@ import { useAuthContext } from '../../../contexts/AuthContext';
 import styles from './Card.module.css';
 import simpleStyles from '../../commonStyles/simpleButton.module.css';
 
+
 export default function Card({fear}) {
     const { user } = useAuthContext();
     
