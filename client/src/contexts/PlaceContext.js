@@ -60,9 +60,7 @@ export const PlaceProvider = ({
         return fear
     }
   };
-  const getTopFears = () => {
-    return fears.sort(function (a, b) { return b.likes.length - a.likes.length; }).slice(0, 3);
-  }
+
 
   const contextValues = {
     addFear,
@@ -70,7 +68,6 @@ export const PlaceProvider = ({
     delFears,
     getFear,
     likeFear,
-    getTopFears,
     fears,
   }
   return (
