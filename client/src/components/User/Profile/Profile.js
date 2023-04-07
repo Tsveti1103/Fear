@@ -6,55 +6,14 @@ import { Link } from 'react-router-dom';
 import Delete from '../Delete/Delete';
 import { useAuthContext } from "../../../contexts/AuthContext";
 import { usePlaceContext } from "../../../contexts/PlaceContext";
-import { useEffect, useState } from 'react';
-import * as itemService from "../../../services/itemService";
+import useProfile from '../../../hooks/useProfile';
 
 export default function Profile() {
     const { user } = useAuthContext();
     const { fears } = usePlaceContext();
-    const [showCreatedFears, setShowCreatedFears] = useState(false)
-    const [showLikedFears, setShowLikedFears] = useState(false)
-    const [createdFears, setCreatedFears] = useState([]);
-    const [likedFears, setLikedFears] = useState([]);
     const id = user.user_id
-    useEffect(() => {
-        let userF = []
-        itemService.getAllFears()
-            .then((fears) => {
-                for (let fear of fears) {
-                    if (fear.user == id) {
-                        userF.push(fear)
-                    }
-                }
-            })
-        setCreatedFears(userF)
-    }, [fears]);
-
-    useEffect(() => {
-        let userF = []
-        itemService.getAllFears()
-            .then((fears) => {
-                for (let fear of fears) {
-                    if (fear.likes.includes(id))
-                        userF.push(fear)
-                }
-            })
-        setLikedFears(userF)
-    }, [fears]);
-    // const createdFears = userFears(id)
-    // const likedFears = userLikedFears(id)
-    const onShowFearsClick = (e) => {
-        let button = e.target.id
-        e.preventDefault();
-        if (button === 'create') {
-            setShowCreatedFears(current => !current)
-            setShowLikedFears(false)
-        }
-        else if (button === 'like') {
-            setShowLikedFears(current => !current)
-            setShowCreatedFears(false)
-        }
-    }
+    const [showCreatedFears, showLikedFears, createdFears, likedFears, onShowFearsClick] = useProfile(id, fears)
+    
     return (
         <div className={styles.container}>
             <div className={styles.icons}>
