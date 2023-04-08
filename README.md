@@ -1,6 +1,6 @@
 # Fear
 
-Fear is web application for places where you can face your fears or just get a dose of adrenaline.  :calendar:
+Fear is web application for places where you can face your fears or just get a dose of adrenaline.
 
 :dart:  My project for the ReactJS course at SoftUni. (February 2023) 
 
@@ -26,7 +26,7 @@ Fear is web application for places where you can face your fears or just get a d
 
 ## :hammer_and_pick: Built With
 
-- JS
+- JS [![My Skills](https://skillicons.dev/icons?i=js,)](https://skillicons.dev)
 - React
 - Python
 - Django
