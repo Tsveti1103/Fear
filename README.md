@@ -21,8 +21,7 @@ Fear is web application for places where you can face your fears or just get a d
   - can delete fear;
   - can edit profile;
   - can delete profile;
-- Admin:
-  - can do anything
+
 
 ## :hammer_and_pick: Built With
 
