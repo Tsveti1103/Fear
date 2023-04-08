@@ -26,15 +26,15 @@ Fear is web application for places where you can face your fears or just get a d
 
 ## :hammer_and_pick: Built With
 
-- JS [![My Skills](https://skillicons.dev/icons?i=js,)](https://skillicons.dev)
-- React
-- Python
-- Django
-- HTML
-- CSS
-- PostgreSQL
-- Docker
+- [![My Skills](https://skillicons.dev/icons?i=js,)](https://skillicons.dev)
+- [![My Skills](https://skillicons.dev/icons?i=react,)](https://skillicons.dev)
+- [![My Skills](https://skillicons.dev/icons?i=py,)](https://skillicons.dev)
+- [![My Skills](https://skillicons.dev/icons?i=html,)](https://skillicons.dev)
+- [![My Skills](https://skillicons.dev/icons?i=css,)](https://skillicons.dev)
+- [![My Skills](https://skillicons.dev/icons?i=postgres,)](https://skillicons.dev)
+- [![My Skills](https://skillicons.dev/icons?i=docker,)](https://skillicons.dev)
 - Google maps
+- Django
 
 
 ## :gear: Application Configurations
