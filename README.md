@@ -43,6 +43,7 @@ Fear is web application for places where you can face your fears or just get a d
 - In the client directory use command npm start
 
 ## :framed_picture: Screenshots
+# Catalog
 <img src="Screenshots/Catalog.png" width="600">
 
  
