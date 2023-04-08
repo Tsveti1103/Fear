@@ -19,7 +19,7 @@ export default function Navigation() {
 					<li><Link to="/contactus">Contact Us</Link></li>
 					<li><Link to="/map">Fears Map</Link></li>
 					{user &&
-						<li><Link to="/create">Create</Link></li>
+						<li><Link to="/create">Create Fear</Link></li>
 					}
 					{user &&
 						<li><Link to="/profile">Profile</Link></li>

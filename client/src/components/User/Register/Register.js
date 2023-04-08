@@ -38,13 +38,17 @@ export default function Register() {
                         onChange={onChangeHandler}
                         onBlur={formValidate}
                     />
-                    <label htmlFor="username">Username</label>
+                    {formErrors.username ?
+                        <>
+                            <label htmlFor="username" >Username</label>
+                            <p className={formStyles.formError}>
+                                {formErrors.username}
+                            </p>
+                        </>
+                        : <label htmlFor="username" className={formStyles.isvalid}>Username</label>
+                    }
                 </div>
-                {formErrors.username &&
-                    <p className={formStyles.formError}>
-                        {formErrors.username}
-                    </p>
-                }
+
                 <div className={formStyles.userBox}>
                     <input
                         type="text"
@@ -55,13 +59,17 @@ export default function Register() {
                         onChange={onChangeHandler}
                         onBlur={formValidate}
                     />
-                    <label htmlFor="email">Email</label>
+
+                    {formErrors.email ?
+                        <>
+                            <label htmlFor="email" >Email</label>
+                            <p className={formStyles.formError}>
+                                {formErrors.email}
+                            </p>
+                        </>
+                        : <label htmlFor="email" className={formStyles.isvalid}>Email</label>
+                    }
                 </div>
-                {formErrors.email &&
-                    <p className={formStyles.formError}>
-                        {formErrors.email}
-                    </p>
-                }
                 <div className={formStyles.userBox}>
                     <input
                         type="password"
@@ -72,13 +80,17 @@ export default function Register() {
                         onChange={onChangeHandler}
                         onBlur={formValidate}
                     />
-                    <label htmlFor="password">Password</label>
+
+                    {formErrors.password ?
+                        <>
+                            <label htmlFor="password" >Password</label>
+                            <p className={formStyles.formError}>
+                                {formErrors.password}
+                            </p>
+                        </>
+                        : <label htmlFor="password" className={formStyles.isvalid}>Password</label>
+                    }
                 </div>
-                {formErrors.password &&
-                    <p className={formStyles.formError}>
-                        {formErrors.password}
-                    </p>
-                }
                 <div className={formStyles.userBox}>
                     <input
                         type="password"
@@ -89,13 +101,16 @@ export default function Register() {
                         onChange={onChangeHandler}
                         onBlur={formValidate}
                     />
-                    <label htmlFor="repass">Repeat Password</label>
+                    {formErrors.confirmPassword ?
+                        <>
+                            <label htmlFor="repass" >Repeat Password</label>
+                            <p className={formStyles.formError}>
+                                {formErrors.confirmPassword}
+                            </p>
+                        </>
+                        : <label htmlFor="repass" className={formStyles.isvalid}>Repeat Password</label>
+                    }
                 </div>
-                {formErrors.confirmPassword &&
-                    <p className={formStyles.formError}>
-                        {formErrors.confirmPassword}
-                    </p>
-                }
                 {serverErrors &&
                     <p className={formStyles.formError}>{serverErrors}</p>
                 }

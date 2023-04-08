@@ -37,29 +37,28 @@
 }
 
 .formBox .userBox label {
+    top: -2rem;
     position: absolute;
-    top: 0;
     left: 0;
-    padding: 10px 0;
-    font-size: 16px;
+    padding: 1rem 0;
+    font-size: 1.5rem;
     color: red;
     pointer-events: none;
     transition: .5s;
-}
-/* .formBox .userBox input:valid, */
-.formBox .userBox input:focus{
-    border-bottom: 1px solid white;
-}
-.formBox .userBox input:valid~label,
-.formBox .userBox input:focus~label {
-    top: -20px;
+}   
+
+.formBox .userBox .isvalid{
+    top: -2rem;
     left: 0;
     color: white;
-    font-size: 12px;
+    font-size: 1rem;
 }
-.formBox .userBox input:valid,
-.formBox .userBox input:focus{
-    border-bottom: 1px solid white;
+
+.formBox .userBox input:focus~label {
+    top: -2rem;
+    left: 0;
+    color: white;
+    font-size: 1.15rem;
 }
 
 

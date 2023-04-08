@@ -34,13 +34,17 @@ export default function Login() {
                         onChange={onChangeHandler}
                         onBlur={formValidate}
                     />
-                    <label htmlFor="username">Username</label>
+                    {formErrors.username ?
+                        <>
+                            <label htmlFor="username">Username</label>
+                            <p className={formStyles.formError}>
+                                {formErrors.username}
+                            </p>
+                        </>
+                        :
+                        <label htmlFor="username" className={formStyles.isvalid}>Username</label>
+                    }
                 </div>
-                {formErrors.username &&
-                    <p className={formStyles.formError}>
-                        {formErrors.username}
-                    </p>
-                }
                 <div className={formStyles.userBox}>
                     <input
                         type="password"
@@ -51,13 +55,18 @@ export default function Login() {
                         onChange={onChangeHandler}
                         onBlur={formValidate}
                     />
-                    <label htmlFor="password">Password</label>
-                </div>
-                {formErrors.password &&
-                    <p className={formStyles.formError}>
-                        {formErrors.password}
-                    </p>
+                     {formErrors.password ?
+                    <>
+                        <label htmlFor="password">Password</label>
+                        <p className={formStyles.formError}>
+                            {formErrors.password}
+                        </p>
+                    </>
+                    :
+                    <label htmlFor="password" className={formStyles.isvalid}>Password</label>
                 }
+                </div>
+               
                 {serverErrors &&
                     <p className={formStyles.formError}>{serverErrors}</p>
                 }

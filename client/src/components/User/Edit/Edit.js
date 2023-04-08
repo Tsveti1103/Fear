@@ -18,7 +18,7 @@ export default function EditUser() {
     }, editUser, id);
 
     useEffect(() => {
-        changeValues(user); 
+        changeValues(user);
     }, []);
     const [formErrors, formValidate] = useErrors(
         {
@@ -41,13 +41,17 @@ export default function EditUser() {
                         onChange={onChangeHandler}
                         onBlur={formValidate}
                     />
-                    <label htmlFor="username">Username</label>
+                    {formErrors.username ?
+                        <>
+                            <label htmlFor="username">Username</label>
+                            <p className={formStyles.formError}>
+                                {formErrors.username}
+                            </p>
+                        </>
+                        : <label htmlFor="username" className={formStyles.isvalid}>Username</label>
+                    }
                 </div>
-                {formErrors.username &&
-                    <p className={formStyles.formError}>
-                        {formErrors.username}
-                    </p>
-                }
+
                 <div className={formStyles.userBox}>
                     <input
                         type="text"
@@ -58,13 +62,17 @@ export default function EditUser() {
                         onChange={onChangeHandler}
                         onBlur={formValidate}
                     />
-                    <label htmlFor="email">Email</label>
+                    {formErrors.email ?
+                        <>
+                            <label htmlFor="email">Email</label>
+                            <p className={formStyles.formError}>
+                                {formErrors.email}
+                            </p>
+                        </>
+                        : <label htmlFor="email" className={formStyles.isvalid}>Email</label>
+                    }
                 </div>
-                {formErrors.email &&
-                    <p className={formStyles.formError}>
-                        {formErrors.email}
-                    </p>
-                }
+
                 {serverErrors ? serverErrors.map(err => <p key={err} className={formStyles.formError}>{err}</p>) : <></>}
                 <div className={formStyles.btns}>
                     <button className={buttonStyles.redBtn} disabled={!isValid}>

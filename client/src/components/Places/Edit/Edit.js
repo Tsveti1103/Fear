@@ -14,7 +14,7 @@ import useErrors from '../../../hooks/useErorrs';
 export default function Edit() {
     const { editFear } = usePlaceContext();
     const { fearId } = useParams();
-    const { values, onChangeHandler, onSubmit,changeValues, serverErrors } = useForm({
+    const { values, onChangeHandler, onSubmit, changeValues, serverErrors } = useForm({
         title: '',
         city: '',
         latitude: 0,
@@ -44,7 +44,7 @@ export default function Edit() {
             .then(result => {
                 changeValues(result);
             });
-    }, [fearId]); 
+    }, [fearId]);
     let isValid = formIsValid(formErrors)
     return (
         <div className={formStyles.formBox}>
@@ -60,13 +60,17 @@ export default function Edit() {
                         onChange={onChangeHandler}
                         onBlur={formValidate}
                     />
-                    <label htmlFor="title">Title</label>
+                    {formErrors.title ?
+                        <>
+                            <label htmlFor="title">Title</label>
+                            <p className={formStyles.formError}>
+                                {formErrors.title}
+                            </p>
+                        </>
+                        : <label htmlFor="title" className={formStyles.isvalid}>Title</label>
+                    }
                 </div>
-                {formErrors.title &&
-                    <p className={formStyles.formError}>
-                        {formErrors.title}
-                    </p>
-                }
+
                 <div className={formStyles.userBox}>
                     <input
                         type="text"
@@ -77,13 +81,17 @@ export default function Edit() {
                         onChange={onChangeHandler}
                         onBlur={formValidate}
                     />
-                    <label htmlFor="city">City</label>
+                    {formErrors.city ?
+                        <>
+                            <label htmlFor="city">City</label>
+                            <p className={formStyles.formError}>
+                                {formErrors.city}
+                            </p>
+                        </>
+                        : <label htmlFor="city" className={formStyles.isvalid}>City</label>
+                    }
                 </div>
-                {formErrors.city &&
-                    <p className={formStyles.formError}>
-                        {formErrors.city}
-                    </p>
-                }
+
                 <div className={formStyles.userBox}>
                     <input
                         type="number"
@@ -94,13 +102,17 @@ export default function Edit() {
                         onChange={onChangeHandler}
                         onBlur={formValidate}
                     />
-                    <label htmlFor="latitude">Latitude</label>
+                    {formErrors.latitude ?
+                        <>
+                            <label htmlFor="latitude">Latitude</label>
+                            <p className={formStyles.formError}>
+                                {formErrors.latitude}
+                            </p>
+                        </>
+                        : <label htmlFor="latitude" className={formStyles.isvalid}>Latitude</label>
+                    }
                 </div>
-                {formErrors.latitude &&
-                    <p className={formStyles.formError}>
-                        {formErrors.latitude}
-                    </p>
-                }
+
                 <div className={formStyles.userBox}>
                     <input
                         type="number"
@@ -111,13 +123,18 @@ export default function Edit() {
                         onChange={onChangeHandler}
                         onBlur={formValidate}
                     />
-                    <label htmlFor="longitude">Longitude</label>
+                    {formErrors.longitude ?
+                        <>
+                            <label htmlFor="longitude">Longitude</label>
+                            <p className={formStyles.formError}>
+                                {formErrors.longitude}
+                            </p>
+                        </> :
+                        <label htmlFor="longitude" className={formStyles.isvalid}>Longitude</label>
+
+                    }
                 </div>
-                {formErrors.longitude &&
-                    <p className={formStyles.formError}>
-                        {formErrors.longitude}
-                    </p>
-                }
+
                 <div className={formStyles.userBox}>
                     <input
                         type="url"
@@ -128,13 +145,17 @@ export default function Edit() {
                         onChange={onChangeHandler}
                         onBlur={formValidate}
                     />
-                    <label htmlFor="website">Website</label>
+                    {formErrors.website ?
+                        <>
+                            <label htmlFor="website" >Website</label>
+                            <p className={formStyles.formError}>
+                                {formErrors.website}
+                            </p>
+                        </>
+                        : <label htmlFor="website" className={formStyles.isvalid}>Website</label>
+                    }
                 </div>
-                {formErrors.website &&
-                    <p className={formStyles.formError}>
-                        {formErrors.website}
-                    </p>
-                }
+
                 <div className={formStyles.userBox}>
                     <input
                         className={style.imgBox}
@@ -169,13 +190,17 @@ export default function Edit() {
                         onChange={onChangeHandler}
                         onBlur={formValidate}
                     />
-                    <label htmlFor="description" >Description</label>
+                      {formErrors.description ?
+                        <>
+                            <label htmlFor="description">Description</label>
+                            <p className={formStyles.formError}>
+                                {formErrors.description}
+                            </p>
+                        </>
+                        : <label htmlFor="description" className={formStyles.isvalid}>Description</label>
+                    }
                 </div>
-                {formErrors.description &&
-                    <p className={formStyles.formError}>
-                        {formErrors.description}
-                    </p>
-                }
+
                 <p className={style.paragraf}>Fears</p>
 
                 <div className={style.check}>
@@ -222,7 +247,7 @@ export default function Edit() {
                         checked={values.fear_other}
                     />
                 </div>
-                {serverErrors? serverErrors.map(err => <p key={err} className={formStyles.formError}>{err}</p> ): <></>}
+                {serverErrors ? serverErrors.map(err => <p key={err} className={formStyles.formError}>{err}</p>) : <></>}
                 <div className={formStyles.btns}>
                     <button className={buttonStyles.redBtn} disabled={!isValid}>
                         <span />
