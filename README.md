@@ -44,7 +44,22 @@ Fear is web application for places where you can face your fears or just get a d
 
 ## :framed_picture: Screenshots
 ### Catalog
-<img src="Screenshots/Catalog.png" width="600">
+<img src="Screenshots/Catalog.png" alt="Catalog" width="600">
+
+### Create Fear
+<img src="Screenshots/CreateFear.png" alt="Create Fear" width="600">
+
+### Details
+<img src="Screenshots/Details.png" alt="Details" width="600">
+
+### Home with user
+<img src="Screenshots/Home with user.png" alt="Home with user" width="600">
+
+### Login
+<img src="Screenshots/Login.png" alt="Login" width="600">
+
+### Map
+<img src="Screenshots/map.png" alt="Map" width="600">
 
  
 
