@@ -28,6 +28,7 @@ import RouteGuardIsAuthenticated from './components/common/RouteGuardIsAuthentic
 import RouteGuardIsNotAuthenticated from './components/common/RouteGuardIsNotAuthenticated';
 import RouteGuardIsOwner from './components/common/RouteGuardIsOwner';
 import EditUser from './components/User/Edit/Edit';
+import Map from './components/Map/Map';
 
 
 
@@ -43,6 +44,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/contactus" element={<ContactUs />} />
+              <Route path="/map" element={<Map />} />
 
               <Route path="/fears" element={<Catalog />} />
               <Route path="/fears/all" element={<All />} />

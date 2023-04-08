@@ -1,0 +1,27 @@
+.mapContainer {
+  width: 80vw;
+  height: 80vh;
+  border-radius: 1rem;
+  border: solid 0.25rem red;
+}
+
+
+.info {
+  width: fit-content;
+  height: fit-content;
+  padding: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.info p {
+  margin: 1rem;
+  width: 10rem;
+  text-align: center;
+}
+
+.info a {
+  margin-right: 0;
+}

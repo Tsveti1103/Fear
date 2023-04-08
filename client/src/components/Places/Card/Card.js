@@ -12,7 +12,7 @@ export default function Card({fear}) {
             <h1>{fear.title}</h1>
             <div className={styles.img} style={{backgroundImage :`url(${fear.image})`}} alt="" />
             <p>Description: {fear.description.split(' ').slice(0, 10).join(" ") + "..."}</p>
-            {user? <Link className={simpleStyles.simple} to={`/fears/${fear.id}`} >Details</Link> : <Link to={`/login`} >Details</Link>}
+            {user? <Link className={simpleStyles.simple} to={`/fears/${fear.id}`} >Details</Link> : <Link className={simpleStyles.simple} to={`/login`} >Details</Link>}
         </div>
     )
 }
