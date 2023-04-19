@@ -40,9 +40,5 @@ describe('Home Component', () => {
     });
     // TODO
     // test('Home page with user and fears', () => {
-    //     customRender(true, true)
-    //     const message = 'Top three most liked fears'
-    //     expect(screen.queryByText(message)).toBeInTheDocument()
-
     // });
 });

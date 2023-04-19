@@ -1,7 +1,5 @@
-from rest_framework import generics as rest_generic_views, permissions, serializers
+from rest_framework import generics as rest_generic_views, permissions
 from rest_framework.parsers import MultiPartParser, FormParser
-from rest_framework.views import APIView
-from rest_framework.response import Response
 from server.api_data.models import Places
 from server.api_data.serializers import PlacesCreateSerializer, PlacesListSerializer, PlacesDetailsSerializer, \
     PlacesEditSerializer, LikesSerializer
@@ -45,11 +43,7 @@ class AddLikeUnlikeView(rest_generic_views.UpdateAPIView):
 class DetailsPlaceApiView(rest_generic_views.RetrieveAPIView):
     queryset = Places.objects.all()
     serializer_class = PlacesDetailsSerializer
-
-    # only authenticated users can view this
-    # permission_classes = (
-    #     permissions.IsAuthenticated,
-    # )
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         queryset = self.queryset
@@ -82,39 +76,21 @@ class ListHeightPlacesApiView(ListAllPlacesApiView):
 class ListOtherPlacesApiView(ListAllPlacesApiView):
     queryset = Places.objects.filter(fear_other=True)
 
-# class ListCreatePlacesApiView(rest_generic_views.ListCreateAPIView):
-#     queryset = Places.objects.all()
-#     # add two serializers to this view
-#     create_serializer_class = PlacesCreateSerializer
-#     list_serializer_class = PlacesListSerializer
-#     filter_names = ('name',)
-#
-#     # only authenticated users can view this
-#     permission_classes = (
-#         permissions.IsAuthenticated,
-#     )
-#
-#     # use list_serializer_class or create_serializer_class
-#     def get_serializer_class(self):
-#         if self.request.method == 'GET':
-#             return self.list_serializer_class
-#         return self.create_serializer_class
-#
-#     def get_queryset(self):
-#         queryset = self.queryset
-#         queryset = queryset.filter(user=self.request.user)
-#         # simple add filter to the queryset
-#         # category_id = self.request.query_params.get('category', None)
-#         # if category_id:
-#         #     queryset = queryset.filter(category=category_id)
-#         # return queryset
-#         return self.__apply_filters_to_queryset(queryset)
-#
-#     def __apply_filters_to_queryset(self, queryset):
-#         queryset_params = {}
-#         for filter_name in self.filter_names:
-#             filter_id = self.request.query_params.get(filter_name, None)
-#             if filter_id:
-#                 queryset_params[f'{filter_name}'] = filter_id
-#
-#         return queryset.filter(**queryset_params)
+
+class ListUserCreatedPlacesApiView(ListAllPlacesApiView):
+    queryset = Places.objects.all()
+
+    def get_queryset(self):
+        queryset = self.queryset
+        queryset = queryset.filter(user=self.request.user.pk)
+        return queryset
+
+
+class ListUserLikedPlacesApiView(ListAllPlacesApiView):
+    queryset = Places.objects.all()
+
+    def get_queryset(self):
+        queryset = self.queryset
+        user = self.request.user.pk
+        queryset = queryset.filter(likes__in=[user])
+        return queryset

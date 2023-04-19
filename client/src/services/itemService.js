@@ -10,6 +10,8 @@ const endpoints = {
     delete: (placeId)=> `/places/delete/${placeId}`,
     edit: (placeId)=> `/places/edit/${placeId}`,
     like: (placeId)=> `/places/like/${placeId}`,
+    userFears: '/places/userplaces',
+    userLikedFears: '/places/userlikedplaces',
 };
 
 export async function getAllFears(){
@@ -41,5 +43,12 @@ export function deleteFear(id){
 };
 export function likeFear(data,id){
     return api.put(endpoints.like(id),data)
+};
+
+export function getUserFears(){
+    return api.get(endpoints.userFears)
+};
+export function getUserLikedFears(){
+    return api.get(endpoints.userLikedFears)
 };
 

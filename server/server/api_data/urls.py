@@ -2,7 +2,7 @@ from django.urls import path
 
 from server.api_data.views import ListAllPlacesApiView, CreatePlaceApiView, ListAnimalsPlacesApiView, \
     ListWaterPlacesApiView, ListHeightPlacesApiView, ListOtherPlacesApiView, DetailsPlaceApiView, DeletePlaceApiView, \
-    EditPlaceApiView, AddLikeUnlikeView
+    EditPlaceApiView, AddLikeUnlikeView, ListUserCreatedPlacesApiView,ListUserLikedPlacesApiView
 
 urlpatterns = (
     path('all', ListAllPlacesApiView.as_view(), name="all places"),
@@ -15,4 +15,6 @@ urlpatterns = (
     path('delete/<int:pk>', DeletePlaceApiView.as_view(), name="delete place"),
     path('edit/<int:pk>', EditPlaceApiView.as_view(), name="edit place"),
     path('like/<int:pk>', AddLikeUnlikeView.as_view(), name="edit place"),
+    path('userplaces', ListUserCreatedPlacesApiView.as_view(), name="user places"),
+    path('userlikedplaces', ListUserLikedPlacesApiView.as_view(), name="user liked places"),
 )
