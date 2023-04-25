@@ -1,14 +1,26 @@
 .cards{
     display: flex;
-    flex-wrap: wrap;
-    gap:4rem;
-    margin: 2rem 2rem;
+    gap:3rem;
+    margin: 3rem 2rem;
     justify-content: center;
     width: 80%; 
+    padding: 0;
 }
 .noFears{
     font-size:2rem;
     color: red;
     height: 100%;
     margin: auto;
+}
+@media screen and (max-width:1280px){
+    .cards{
+        gap:1rem;
+    }
+}
+@media screen and (max-width:1024px){
+    .cards{
+        flex-direction: column;
+        align-items: center;
+        gap: 4rem;
+    }
 }

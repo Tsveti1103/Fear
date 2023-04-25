@@ -6,19 +6,31 @@
 *::after {
   box-sizing: border-box;
 }
+
 body {
-    font-family: Nunito;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('./imgs/pexels-elti-meshau-333850.jpg');
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Nunito, sans-serif;
 }
+
 .modal-open {
   overflow: hidden;
 }
-main{
+
+main {
   min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 3rem 0;
 }
+
 /* Remove default margin */
 body,
 h1,
@@ -76,9 +88,9 @@ select {
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
-   scroll-behavior: auto;
+    scroll-behavior: auto;
   }
-  
+
   *,
   *::before,
   *::after {

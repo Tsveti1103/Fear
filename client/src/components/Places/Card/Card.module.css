@@ -1,10 +1,15 @@
 .card{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     background-color: rgba(0,0,0,0.5);
     border-radius: 1rem;
     padding: 1rem;
+    max-width: 350px;
+    width: 100vw;
+    gap: 1rem;
 }
 .card h1,
 .card p{
@@ -12,9 +17,7 @@
 }
 .card p,
 .card .img{
-    width:300px;
-    margin: 2rem 0;
-   
+    width:300px;  
 }
 .card .img{
     height: 300px;
@@ -22,6 +25,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    width: 90%;
 }
 
 .card:hover{

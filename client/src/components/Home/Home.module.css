@@ -22,22 +22,15 @@
   text-shadow: red 1px 0 10px;
 }
 
-body {
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url('../../imgs/pexels-elti-meshau-333850.jpg');
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+
 
 .heading{
-  color: red;font-size: 4rem;
+  color: red;
+  font-size: 4rem;
   margin-bottom: 4rem;
   background: rgba(0, 0, 0, 0.5);
   font-family: Lacquer, cursive;
   border-radius: 1rem;
   padding:0.5rem;
+  text-align: center;
 }
