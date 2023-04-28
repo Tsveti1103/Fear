@@ -7,7 +7,7 @@ import useErrors from '../../../hooks/useErorrs';
 import { formIsValid } from '../../../services/utils';
 
 export default function Register() {
-    const { registerUser } = useAuthContext();
+    const { registerUser, passwordShown, showPassword } = useAuthContext();
     const { values, onChangeHandler, onSubmit, serverErrors } = useForm({
         username: '',
         email: '',
@@ -71,8 +71,9 @@ export default function Register() {
                     }
                 </div>
                 <div className={formStyles.userBox}>
+                <i className={`fa-solid fa-eye ${formStyles['show']}`} onClick={showPassword}></i>
                     <input
-                        type="password"
+                        type={passwordShown ? "text" : "password"}
                         name="password"
                         id="password"
                         required=""

@@ -1,80 +1,88 @@
   .formBox {
-    max-width: 400px;
-    width: 100vw;
-    padding: 40px;
-    background: rgba(0, 0, 0, .5);
-    box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
-    border-radius: 10px;
-}
+      max-width: 400px;
+      width: 100vw;
+      padding: 40px;
+      background: rgba(0, 0, 0, .5);
+      box-sizing: border-box;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+      border-radius: 10px;
+  }
 
 
-.formBox h2 {
-    margin: 0 0 30px;
-    padding: 0;
-    color: #fff;
-    text-align: center;
-}
+  .formBox h2 {
+      margin: 0 0 30px;
+      padding: 0;
+      color: #fff;
+      text-align: center;
+  }
 
-.formBox .userBox {
-    position: relative;
-}
+  .formBox .userBox {
+      position: relative;
+  }
 
-.formBox .userBox input {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    margin-bottom: 30px;
-    border: none;
-    border-bottom: 1px solid red;
-    outline: none;
-    background: transparent;
-    caret-color:red;
-}
+  .formBox .userBox input {
+      width: 100%;
+      padding: 10px 0;
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 30px;
+      border: none;
+      border-bottom: 1px solid red;
+      outline: none;
+      background: transparent;
+      caret-color: red;
+  }
 
-.formBox .userBox label {
-    top: -2rem;
-    position: absolute;
-    left: 0;
-    padding: 1rem 0;
-    font-size: 1.5rem;
-    color: red;
-    pointer-events: none;
-    transition: .5s;
-}   
+  .formBox .userBox label {
+      top: -2rem;
+      position: absolute;
+      left: 0;
+      padding: 1rem 0;
+      font-size: 1.5rem;
+      color: red;
+      pointer-events: none;
+      transition: .5s;
+  }
 
-.formBox .userBox .isvalid{
-    top: -2rem;
-    left: 0;
-    color: white;
-    font-size: 1rem;
-}
+  .formBox .userBox .isvalid {
+      top: -2rem;
+      left: 0;
+      color: white;
+      font-size: 1rem;
+  }
 
-.formBox .userBox input:focus~label {
-    top: -2rem;
-    left: 0;
-    color: white;
-    font-size: 1.15rem;
-}
+  .formBox .userBox input:focus~label {
+      top: -2rem;
+      left: 0;
+      color: white;
+      font-size: 1.15rem;
+  }
 
+  .formBox .userBox .show {
+      color: white;
+      position: absolute;
+      right: 0;
+      top: 0.8rem;
+      font-size: 1.25rem;
+  }
 
-.btns{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 40px;
+  .btns {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 40px;
 
-}
-.signUpIn{
-    text-decoration: none;
-    color: red;
-    width: fit-content;
-    font-size: 1rem;
-}
+  }
 
-.formError{
-    color: red;
-    text-align: center;
-    margin: 1rem;
-}
+  .signUpIn {
+      text-decoration: none;
+      color: red;
+      width: fit-content;
+      font-size: 1rem;
+  }
+
+  .formError {
+      color: red;
+      text-align: center;
+      margin: 1rem;
+  }

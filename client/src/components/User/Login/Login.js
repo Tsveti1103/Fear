@@ -7,7 +7,7 @@ import useErrors from '../../../hooks/useErorrs';
 import { formIsValid } from '../../../services/utils';
 
 export default function Login() {
-    const { userLogin } = useAuthContext();
+    const { userLogin, passwordShown, showPassword } = useAuthContext();
     const { values, onChangeHandler, onSubmit, serverErrors } = useForm({
         username: '',
         password: '',
@@ -20,6 +20,7 @@ export default function Login() {
         }
     );
     let isValid = formIsValid(formErrors)
+
     return (
         <div className={formStyles.formBox}>
             <h2>Login</h2>
@@ -46,8 +47,9 @@ export default function Login() {
                     }
                 </div>
                 <div className={formStyles.userBox}>
+                    <i className={`fa-solid fa-eye ${formStyles['show']}`} onClick={showPassword}></i>
                     <input
-                        type="password"
+                        type={passwordShown ? "text" : "password"}
                         name="password"
                         id="password"
                         required=""
@@ -55,18 +57,18 @@ export default function Login() {
                         onChange={onChangeHandler}
                         onBlur={formValidate}
                     />
-                     {formErrors.password ?
-                    <>
-                        <label htmlFor="password">Password</label>
-                        <p className={formStyles.formError}>
-                            {formErrors.password}
-                        </p>
-                    </>
-                    :
-                    <label htmlFor="password" className={formStyles.isvalid}>Password</label>
-                }
+                    {formErrors.password ?
+                        <>
+                            <label htmlFor="password">Password</label>
+                            <p className={formStyles.formError}>
+                                {formErrors.password}
+                            </p>
+                        </>
+                        :
+                        <label htmlFor="password" className={formStyles.isvalid}>Password</label>
+                    }
                 </div>
-               
+
                 {serverErrors &&
                     <p className={formStyles.formError}>{serverErrors}</p>
                 }

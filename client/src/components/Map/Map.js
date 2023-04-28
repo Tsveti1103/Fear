@@ -7,11 +7,13 @@ import { useState } from "react";
 import simpleStyles from '../commonStyles/simpleButton.module.css';
 import { Link } from "react-router-dom";
 import { useAuthContext } from '../../contexts/AuthContext';
+import ReactLoading from 'react-loading';
+
 export default function Map() {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
   });
-  if (!isLoaded) return <div>Loading...</div>;
+  if(!isLoaded) return <ReactLoading className={styles.spinner} type="spinningBubbles" color='red' height="8rem" width="8rem" />;
   return <CreateMap />;
 }
 
