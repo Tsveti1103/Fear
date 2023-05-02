@@ -1,5 +1,4 @@
 import styles from './Profile.module.css';
-import Card from '../../Places/Card/Card'
 import cardStyles from '../../commonStyles/AllPlaces.module.css';
 import simpleStyles from '../../commonStyles/simpleButton.module.css';
 import { Link } from 'react-router-dom';
@@ -7,12 +6,14 @@ import Delete from '../Delete/Delete';
 import { useAuthContext } from "../../../contexts/AuthContext";
 import { usePlaceContext } from "../../../contexts/PlaceContext";
 import useProfile from '../../../hooks/useProfile';
+import { usePaginate } from '../../../hooks/usePaginate';
 
 export default function Profile() {
     const { user } = useAuthContext();
     const { fears } = usePlaceContext();
     const [showCreatedFears, showLikedFears, createdFears, likedFears, onShowFearsClick] = useProfile(fears)
-
+    const createdF = usePaginate(createdFears)
+    const likedF = usePaginate(likedFears)
     return (
         <div className={styles.container}>
             <div className={styles.icons}>
@@ -35,9 +36,7 @@ export default function Profile() {
                 <h1>Created Fears:</h1>
                 {createdFears.length > 0 ?
                     <>
-                        <ul className={cardStyles.cards}>
-                            {createdFears.map(fear => <Card key={fear.id} fear={fear} />)}
-                        </ul>
+                        {createdF}
                     </>
                     :
                     <p className={cardStyles.noFears}>No fears created</p>
@@ -46,9 +45,9 @@ export default function Profile() {
             <div className={styles.userFears} style={{ display: showLikedFears ? 'flex' : 'none' }}>
                 <h1>Liked Fears:</h1>
                 {likedFears.length > 0 ?
-                    <ul className={cardStyles.cards}>
-                        {likedFears.map(fear => <Card key={fear.id} fear={fear} />)}
-                    </ul>
+                    <>
+                        {likedF}
+                    </>
                     :
                     <p className={cardStyles.noFears}>No fears liked</p>
                 }
