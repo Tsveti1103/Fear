@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Card from '../components/Places/Card/Card';
-import styles from '../components/commonStyles/AllPlaces.module.css';
+import cardStyles from '../components/commonStyles/AllPlaces.module.css';
 import paginateStyles from '../components/commonStyles/Paginate.module.css';
 import ReactPaginate from "react-paginate";
 
@@ -28,7 +28,7 @@ export function usePaginate(fears) {
         <>
             {fears.length > 0 ?
                 <>
-                    <ul className={styles.cards}>
+                    <ul className={cardStyles.cards}>
                         {displayFears}
                     </ul>
                     <ReactPaginate
@@ -49,7 +49,7 @@ export function usePaginate(fears) {
                     />
                 </>
                 :
-                <p className={styles.noFears}>No fears created</p>
+                <p className={cardStyles.noFears}>No fears</p>
             }
         </>
     );

@@ -1,5 +1,4 @@
 import styles from './Profile.module.css';
-import cardStyles from '../../commonStyles/AllPlaces.module.css';
 import simpleStyles from '../../commonStyles/simpleButton.module.css';
 import { Link } from 'react-router-dom';
 import Delete from '../Delete/Delete';
@@ -8,10 +7,11 @@ import { usePlaceContext } from "../../../contexts/PlaceContext";
 import useProfile from '../../../hooks/useProfile';
 import { usePaginate } from '../../../hooks/usePaginate';
 
+
 export default function Profile() {
     const { user } = useAuthContext();
     const { fears } = usePlaceContext();
-    const [showCreatedFears, showLikedFears, createdFears, likedFears, onShowFearsClick] = useProfile(fears)
+    const [showCreatedFears, showLikedFears,createdFears, likedFears, onShowFearsClick] = useProfile(fears)
     const createdF = usePaginate(createdFears)
     const likedF = usePaginate(likedFears)
     return (
@@ -34,23 +34,15 @@ export default function Profile() {
             </div>
             <div className={styles.userFears} style={{ display: showCreatedFears ? 'flex' : 'none' }}>
                 <h1>Created Fears:</h1>
-                {createdFears.length > 0 ?
                     <>
                         {createdF}
                     </>
-                    :
-                    <p className={cardStyles.noFears}>No fears created</p>
-                }
             </div>
             <div className={styles.userFears} style={{ display: showLikedFears ? 'flex' : 'none' }}>
                 <h1>Liked Fears:</h1>
-                {likedFears.length > 0 ?
                     <>
                         {likedF}
                     </>
-                    :
-                    <p className={cardStyles.noFears}>No fears liked</p>
-                }
             </div>
         </div>
     );
