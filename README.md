@@ -32,8 +32,9 @@ Fear is web application for places where you can face your fears or just get a d
 - [![My Skills](https://skillicons.dev/icons?i=css,)](https://skillicons.dev)
 - [![My Skills](https://skillicons.dev/icons?i=postgres,)](https://skillicons.dev)
 - [![My Skills](https://skillicons.dev/icons?i=docker,)](https://skillicons.dev)
+- [![My Skills](https://skillicons.dev/icons?i=django,)](https://skillicons.dev)
 - Google maps
-- Django
+
 
 
 ## :gear: Application Configurations
