@@ -2,16 +2,14 @@ version: '3.9'
 
 services:
   app:
-    build:
-      context: .
-    command: gunicorn server.wsgi:application --bind 0.0.0.0:8000
+    build: ./
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/fear
-      - ./staticfiles:/fear/staticfiles
     ports:
       - 8000:8000
     image: app:fear_backend
-    container_name: fear_server
+    container_name: fear_local
     env_file:
       - ./server/envs/.env
     depends_on:
@@ -20,7 +18,7 @@ services:
     image: postgres
     restart: always
     ports:
-      - 5432:5432
+      - "5432:5432"
     environment:
       POSTGRES_PASSWORD: password
       POSTGRES_USER: postgres-user
@@ -28,16 +26,4 @@ services:
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - ./postgresql:/var/lib/postgresql/data
-  nginx:
-    image: nginx
-    ports:
-      - 81:80
-      - 443:443
-    volumes:
-      - ./staticfiles:/home/app/web/staticfiles
-      - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./nginx/logs:/var/log/nginx
-      - ./certbot/www:/var/www/certbot/:ro
-      - ./certbot/conf/:/etc/nginx/ssl/:ro
-    depends_on:
-      - app
+
