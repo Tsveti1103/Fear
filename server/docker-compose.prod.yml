@@ -15,9 +15,9 @@ services:
     env_file:
       - ./server/envs/.env.prod
     depends_on:
-      - postgres:15.2
+      - postgres
   postgres:
-    image: postgres
+    image: postgres:15.2
     restart: always
     ports:
       - 5432:5432
@@ -31,7 +31,7 @@ services:
   nginx:
     image: nginx
     ports:
-      - 81:80
+      - 80:80
       - 443:443
     volumes:
       - ./staticfiles:/home/app/web/staticfiles
