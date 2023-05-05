@@ -33,14 +33,17 @@ Fear is web application for places where you can face your fears or just get a d
 - [![My Skills](https://skillicons.dev/icons?i=postgres,)](https://skillicons.dev)
 - [![My Skills](https://skillicons.dev/icons?i=docker,)](https://skillicons.dev)
 - [![My Skills](https://skillicons.dev/icons?i=django,)](https://skillicons.dev)
+- [![My Skills](https://skillicons.dev/icons?i=vscode,)](https://skillicons.dev)
+- [![My Skills](https://skillicons.dev/icons?i=git,)](https://skillicons.dev)
+- [![My Skills](https://skillicons.dev/icons?i=github,)](https://skillicons.dev)
 - Google maps
 
 
 
-## :gear: Application Configurations
-- Create PostgreSQL Docker container : https://hub.docker.com/_/postgres
-- Run the server
-- In the client directory use command npm start
+## :gear: Live demo
+- [![My Skills](https://skillicons.dev/icons?i=heroku,)](https://skillicons.dev)
+- [![My Skills](https://skillicons.dev/icons?i=firebase,)](https://skillicons.dev)
+  https://fear-ts.web.app/
 
 ## :framed_picture: Screenshots
 ### Catalog
