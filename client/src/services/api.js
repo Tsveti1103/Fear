@@ -1,7 +1,7 @@
 import { clearUserData, getAccessToken } from "./utils.js";
 
 const host = process.env.NODE_ENV === "development"
-?'http://localhost:8000'
+?'https://13.53.109.26'
 :'http://localhost:8000'
 
 async function request(method, url, data) {
