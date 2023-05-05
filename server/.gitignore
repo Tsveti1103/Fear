@@ -10,7 +10,8 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-#env/
+postgresql/
+env/
 build/
 develop-eggs/
 dist/

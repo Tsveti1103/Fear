@@ -1,13 +1,17 @@
-import { Link } from 'react-router-dom';
 import formStyles from '../../commonStyles/Form.module.css';
 import buttonStyles from '../../commonStyles/button.module.css';
+
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import { useAuthContext } from "../../../contexts/AuthContext";
 import { useForm } from '../../../hooks/useForm';
 import useErrors from '../../../hooks/useErorrs';
 import { formIsValid } from '../../../services/utils';
 
 export default function Login() {
-    const { userLogin, passwordShown, showPassword } = useAuthContext();
+    const { userLogin } = useAuthContext();
+    const [passwordShown, setPasswordShown] = useState(false);
     const { values, onChangeHandler, onSubmit, serverErrors } = useForm({
         username: '',
         password: '',
@@ -21,6 +25,10 @@ export default function Login() {
     );
     let isValid = formIsValid(formErrors)
 
+    function showPassword() {
+        setPasswordShown(!passwordShown);
+    }
+    
     return (
         <div className={formStyles.formBox}>
             <h2>Login</h2>

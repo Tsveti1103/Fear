@@ -1,13 +1,17 @@
-import { Link } from 'react-router-dom';
 import formStyles from '../../commonStyles/Form.module.css';
 import buttonStyles from '../../commonStyles/button.module.css';
+
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { useForm } from '../../../hooks/useForm';
 import useErrors from '../../../hooks/useErorrs';
 import { formIsValid } from '../../../services/utils';
 
 export default function Register() {
-    const { registerUser, passwordShown, showPassword } = useAuthContext();
+    const { registerUser } = useAuthContext();
+    const [passwordShown, setPasswordShown] = useState(false);
     const { values, onChangeHandler, onSubmit, serverErrors } = useForm({
         username: '',
         email: '',
@@ -21,7 +25,13 @@ export default function Register() {
             password: '',
             confirmPassword: '',
         }, values.password);
-    let isValid = formIsValid(formErrors)
+
+    let isValid = formIsValid(formErrors);
+
+    function showPassword() {
+        setPasswordShown(!passwordShown);
+    }
+
     return (
         <div className={formStyles.formBox}>
 

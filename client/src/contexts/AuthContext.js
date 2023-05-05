@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import useLocalStorage from "../hooks/useLocalStorage";
 import * as userService from "../services/userService";
-import { useState } from "react";
+
 
 export const AuthContext = createContext();
 
@@ -12,7 +12,6 @@ export const AuthProvider = ({
 }) => {
     const navigate = useNavigate();
     const [user, setUser] = useLocalStorage();
-    const [passwordShown, setPasswordShown] = useState(false);
     let isAuthenticated;
     user ? isAuthenticated = true : isAuthenticated = false;
     const registerUser = async (data) => {
@@ -56,9 +55,6 @@ export const AuthProvider = ({
         }
       };
 
-      function showPassword(){
-          setPasswordShown(!passwordShown);
-      }
     const contextValues = {
         userLogin,
         userLogout,
@@ -67,10 +63,6 @@ export const AuthProvider = ({
         editUser,
         user,
         isAuthenticated,
-        passwordShown,
-        showPassword,
-
-
     }
 
     return (

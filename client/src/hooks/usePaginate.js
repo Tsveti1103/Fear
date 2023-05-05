@@ -1,9 +1,10 @@
+import spinnerStyle from '../components/commonStyles/Spinner.module.css'
 import { useState } from 'react';
 import Card from '../components/Places/Card/Card';
 import cardStyles from '../components/commonStyles/AllPlaces.module.css';
 import paginateStyles from '../components/commonStyles/Paginate.module.css';
 import ReactPaginate from "react-paginate";
-
+import ReactLoading from 'react-loading';
 
 export function usePaginate(fears) {
     const [pageNumber, setPageNumber] = useState(0);
@@ -49,7 +50,7 @@ export function usePaginate(fears) {
                     />
                 </>
                 :
-                <p className={cardStyles.noFears}>No fears</p>
+                <ReactLoading className={spinnerStyle.spinner} type="spinningBubbles" color='red' height="8rem" width="8rem" />
             }
         </>
     );
