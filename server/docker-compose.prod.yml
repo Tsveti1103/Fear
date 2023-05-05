@@ -10,14 +10,14 @@ services:
       - ./staticfiles:/fear/staticfiles
     ports:
       - 8000:8000
-    image: tsveti1103/fear
+    image: fear
     container_name: fear_server
     env_file:
       - ./server/envs/.env.prod
     depends_on:
       - postgres
   postgres:
-    image: postgres:15.2
+    image: postgres
     restart: always
     ports:
       - 5432:5432
