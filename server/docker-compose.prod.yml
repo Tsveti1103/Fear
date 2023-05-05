@@ -15,7 +15,7 @@ services:
     env_file:
       - ./server/envs/.env.prod
     depends_on:
-      - postgres
+      - postgres:15.2
   postgres:
     image: postgres
     restart: always
