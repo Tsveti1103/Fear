@@ -1,5 +1,7 @@
-import { useState } from 'react';
 import delStyles from './Delete.module.css';
+
+import { useState } from 'react';
+
 import { usePlaceContext } from '../../../contexts/PlaceContext';
 
 
@@ -22,7 +24,7 @@ export default function Delete(
     }
     return (
         <>
-            <button onClick={onChange} className={delStyles.btn}><i className="fa-regular fa-trash-can"></i></button>
+            <button onClick={onChange} className={delStyles.btn} title="Delete"><i className="fa-regular fa-trash-can"></i></button>
             <div className={delStyles.modal}  style={{ display: isOpen ? 'flex' : 'none' }}>
                 <form className={delStyles.modalContent} >
                     <span onClick={onChange} className={delStyles.close} title="Close Modal">&times;</span>

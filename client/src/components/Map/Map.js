@@ -1,12 +1,14 @@
 import styles from './Map.module.css';
 import spinnerStyle from '../commonStyles/Spinner.module.css'
+import simpleStyles from '../commonStyles/simpleButton.module.css';
+
 import { useState,useMemo } from "react";
 import ReactLoading from 'react-loading';
 import { Link } from "react-router-dom";
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
+
 import * as itemService from "../../services/itemService";
 import useFetcher from "../../hooks/useFetcher";
-import simpleStyles from '../commonStyles/simpleButton.module.css';
 import { useAuthContext } from '../../contexts/AuthContext';
 
 export default function Map() {
@@ -45,7 +47,7 @@ function CreateMap() {
         >
           <div className={styles.info}>
             <h1>{selectedMarker.title}</h1>
-            <p>Description: {selectedMarker.description.split(' ').slice(0, 10).join(" ") + "..."}</p>
+            <p>{selectedMarker.description.split(' ').slice(0, 10).join(" ") + "..."}</p>
             {user ? <Link className={simpleStyles.simple} to={`/fears/${selectedMarker.id}`} >Details</Link> : <Link className={simpleStyles.simple} to={`/login`} >Details</Link>}
           </div>
         </InfoWindow>}

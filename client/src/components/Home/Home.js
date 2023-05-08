@@ -1,6 +1,10 @@
 import styles from './Home.module.css';
+import spinnerStyle from '../commonStyles/Spinner.module.css'
 import cardStyles from '../commonStyles/AllPlaces.module.css';
+
 import { Link } from 'react-router-dom';
+import ReactLoading from 'react-loading';
+
 import { usePlaceContext } from '../../contexts/PlaceContext';
 import { useAuthContext } from '../../contexts/AuthContext';
 import Card from '../Places/Card/Card';
@@ -20,7 +24,7 @@ export default function Home() {
                         </ul>
                         </>
                         :
-                        <p className={cardStyles.noFears}>No fears created</p>
+                        <ReactLoading className={spinnerStyle.spinner} type="spinningBubbles" color='red' height="8rem" width="8rem" />
                     }
                 </>
                 :

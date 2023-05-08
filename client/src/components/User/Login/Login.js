@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useAuthContext } from "../../../contexts/AuthContext";
-import { useForm } from '../../../hooks/useForm';
+import useForm from '../../../hooks/useForm';
 import useErrors from '../../../hooks/useErorrs';
 import { formIsValid } from '../../../services/utils';
 

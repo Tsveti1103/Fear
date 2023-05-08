@@ -21,7 +21,7 @@
 
 
 .img {
-    width: 40%;
+    width: 40vw;
     border-radius: 3rem;
     background-position: center;
     background-repeat: no-repeat;
@@ -59,42 +59,58 @@
     color: red;
     margin-left: 2rem;
 }
-.fears .green{
+
+.fears .green {
     color: green;
 }
 
 
-.icons{
+.icons {
     display: flex;
-    gap:1rem;
+    gap: 1rem;
     margin: 2rem;
     width: 10%;
     justify-content: space-around;
 }
-.icons a{
+
+.icons a {
     display: flex;
     align-items: center;
     text-decoration: none;
 }
-.icons i{
+
+.icons i {
     color: white;
     font-size: 2rem;
     margin-left: auto;
 }
 
-.likeBtn{
+.likeBtn {
     background: transparent;
     border: none;
     margin: 1rem;
 }
 
-.likeBtn i{
+.likeBtn i {
     color: red;
     font-size: xx-large;
     display: flex;
     align-items: center;
-    gap:1rem;
+    gap: 1rem;
 }
-.likeBtn i span{
-    font-size:1rem;
+
+.likeBtn i span {
+    font-size: 1rem;
+}
+
+@media screen and (max-width:1024px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+        width: 98%;
+        gap: 1rem;
+    }
+    .img{
+        height:40vw;
+    }
 }

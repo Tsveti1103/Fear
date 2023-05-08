@@ -1,6 +1,8 @@
 import styles from './Profile.module.css';
 import simpleStyles from '../../commonStyles/simpleButton.module.css';
+
 import { Link } from 'react-router-dom';
+
 import Delete from '../Delete/Delete';
 import { useAuthContext } from "../../../contexts/AuthContext";
 import { usePlaceContext } from "../../../contexts/PlaceContext";

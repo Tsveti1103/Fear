@@ -1,10 +1,12 @@
 import spinnerStyle from '../components/commonStyles/Spinner.module.css'
-import { useState } from 'react';
-import Card from '../components/Places/Card/Card';
 import cardStyles from '../components/commonStyles/AllPlaces.module.css';
 import paginateStyles from '../components/commonStyles/Paginate.module.css';
+
+import { useState } from 'react';
 import ReactPaginate from "react-paginate";
 import ReactLoading from 'react-loading';
+
+import Card from '../components/Places/Card/Card';
 
 export function usePaginate(fears) {
     const [pageNumber, setPageNumber] = useState(0);

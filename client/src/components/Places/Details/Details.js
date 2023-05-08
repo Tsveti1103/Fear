@@ -1,39 +1,40 @@
 import styles from './Details.module.css';
-import { Link, useParams } from 'react-router-dom';
+
+import { Link, useParams, useNavigate } from 'react-router-dom';
+
+import Delete from '../Delete/Delete';
 import * as itemService from "../../../services/itemService";
 import useFetcher from '../../../hooks/useFetcher';
 import { useAuthContext } from "../../../contexts/AuthContext";
-import Delete from '../Delete/Delete';
 import { usePlaceContext } from '../../../contexts/PlaceContext';
-import { useNavigate } from "react-router-dom";
 
 export default function Details() {
     const { fearId } = useParams();
     const { likeFear } = usePlaceContext();
-    const [currentFear,setFear] = useFetcher(itemService.details(fearId), [fearId])
+    const [currentFear, setFear] = useFetcher(itemService.details(fearId), [fearId])
     const navigate = useNavigate();
     const { user } = useAuthContext();
 
     const latitude = Number(currentFear.latitude).toFixed(6)
     const longitude = Number(currentFear.longitude).toFixed(6)
     const isOwner = user.user_id === currentFear.user
-    const isLiked =currentFear.likes? currentFear.likes.includes(user.user_id): false
-    function onLikeFear(e){
+    const isLiked = currentFear.likes ? currentFear.likes.includes(user.user_id) : false
+    function onLikeFear(e) {
         e.preventDefault();
         if (typeof currentFear.image == "string") {
             delete currentFear.image;
         }
-        likeFear(currentFear,fearId).then(
-            result =>{
-                let likes=[]
-                for(let i of result["likes"]){
+        likeFear(currentFear, fearId).then(
+            result => {
+                let likes = []
+                for (let i of result["likes"]) {
                     likes.push(i['id'])
                 }
-                setFear(state => ({ ...state, 'likes': likes,"image":result.image }));
+                setFear(state => ({ ...state, 'likes': likes, "image": result.image }));
                 navigate(`/fears/${fearId}`);
             }
         ).catch((err) => {
-            throw(err)
+            throw (err)
         })
     }
     return (
@@ -65,10 +66,10 @@ export default function Details() {
                     </ul>
                 </div>
 
-                <div className={styles.img} style={{ backgroundImage: `url(${currentFear.image})`}} alt="" />
+                <div className={styles.img} style={{ backgroundImage: `url(${currentFear.image})` }} alt="" />
             </div>
             <button onClick={onLikeFear} className={styles.likeBtn}>
-                {isLiked? <i className="fa-solid fa-heart"> <span>DISLIKE</span></i>:<i className="fa-regular fa-heart"><span>LIKE</span></i>}
+                {isLiked ? <i className="fa-solid fa-heart"> <span>DISLIKE</span></i> : <i className="fa-regular fa-heart"><span>LIKE</span></i>}
             </button>
             <p className={styles.description}>{currentFear.description}</p>
         </>

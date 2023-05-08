@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { serverErrorTranslator } from '../services/utils';
-export const useForm = (initialValues, onSubmitHandler, id) => {
+
+export default function useForm (initialValues, onSubmitHandler, id) {
     const [values, setValues] = useState(initialValues);
     const [serverErrors, setServerErrors] = useState([]);
     

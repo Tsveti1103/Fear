@@ -1,11 +1,12 @@
 import formStyles from '../../commonStyles/Form.module.css';
 import buttonStyles from '../../commonStyles/button.module.css';
 
-import { useAuthContext } from '../../../contexts/AuthContext';
-import { useForm } from '../../../hooks/useForm';
-import { formIsValid } from '../../../services/utils';
-import useErrors from '../../../hooks/useErorrs';
 import { useEffect } from 'react';
+
+import { formIsValid } from '../../../services/utils';
+import { useAuthContext } from '../../../contexts/AuthContext';
+import useForm from '../../../hooks/useForm';
+import useErrors from '../../../hooks/useErorrs';
 
 export default function EditUser() {
     const { editUser, user } = useAuthContext();

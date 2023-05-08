@@ -1,5 +1,7 @@
-import { useState } from 'react';
 import delStyles from './Delete.module.css';
+
+import { useState } from 'react';
+
 import { useAuthContext } from '../../../contexts/AuthContext';
 
 

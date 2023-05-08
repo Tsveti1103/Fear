@@ -1,8 +1,10 @@
 import styles from './Header.module.css';
 import simpleStyles from '../commonStyles/simpleButton.module.css';
-import { Link } from 'react-router-dom';
-import { useAuthContext } from "../../contexts/AuthContext";
+
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export default function Navigation() {
 	const { user } = useAuthContext();
