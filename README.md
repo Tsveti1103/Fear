@@ -25,23 +25,23 @@ Fear is web application for places where you can face your fears or just get a d
 
 ## :hammer_and_pick: Built With
 
-- [![My Skills](https://skillicons.dev/icons?i=js,)](https://skillicons.dev)
-- [![My Skills](https://skillicons.dev/icons?i=react,)](https://skillicons.dev)
-- [![My Skills](https://skillicons.dev/icons?i=py,)](https://skillicons.dev)
-- [![My Skills](https://skillicons.dev/icons?i=html,)](https://skillicons.dev)
-- [![My Skills](https://skillicons.dev/icons?i=css,)](https://skillicons.dev)
-- [![My Skills](https://skillicons.dev/icons?i=postgres,)](https://skillicons.dev)
-- [![My Skills](https://skillicons.dev/icons?i=docker,)](https://skillicons.dev)
-- [![My Skills](https://skillicons.dev/icons?i=django,)](https://skillicons.dev)
+- [![JS](https://skillicons.dev/icons?i=js,)](https://skillicons.dev)
+- [![React](https://skillicons.dev/icons?i=react,)](https://skillicons.dev)
+- [![Python](https://skillicons.dev/icons?i=py,)](https://skillicons.dev)
+- [![HTML](https://skillicons.dev/icons?i=html,)](https://skillicons.dev)
+- [![CSS](https://skillicons.dev/icons?i=css,)](https://skillicons.dev)
+- [![Postgres](https://skillicons.dev/icons?i=postgres,)](https://skillicons.dev)
+- [![Docker](https://skillicons.dev/icons?i=docker,)](https://skillicons.dev)
+- [![Django](https://skillicons.dev/icons?i=django,)](https://skillicons.dev)
 - [![My Skills](https://skillicons.dev/icons?i=vscode,)](https://skillicons.dev)
-- [![My Skills](https://skillicons.dev/icons?i=git,)](https://skillicons.dev)
-- [![My Skills](https://skillicons.dev/icons?i=github,)](https://skillicons.dev)
+- [![Git](https://skillicons.dev/icons?i=git,)](https://skillicons.dev)
+- [![Git Hub](https://skillicons.dev/icons?i=github,)](https://skillicons.dev)
 - Google maps
 
 
 
 ## :gear: Live demo
-[![My Skills](https://skillicons.dev/icons?i=heroku,firebase)](https://skillicons.dev)
+[![Heroku Firebase](https://skillicons.dev/icons?i=heroku,firebase)](https://skillicons.dev)
 
   https://fear-ts.web.app/
 
