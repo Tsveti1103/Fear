@@ -11,7 +11,7 @@ import { usePlaceContext } from '../../../contexts/PlaceContext';
 export default function Details() {
     const { fearId } = useParams();
     const { likeFear } = usePlaceContext();
-    const [currentFear, setFear] = useFetcher(itemService.details(fearId), [fearId])
+    const [currentFear, setFear] = useFetcher(itemService.details,fearId, [fearId])
     const navigate = useNavigate();
     const { user } = useAuthContext();
 

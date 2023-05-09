@@ -7,8 +7,8 @@ export default function useProfile(fears) {
 
     const [showCreatedFears, setShowCreatedFears] = useState(false)
     const [showLikedFears, setShowLikedFears] = useState(false)
-    const [createdFears] = useFetcher(itemService.getUserFears(), [fears], []);
-    const [likedFears] = useFetcher(itemService.getUserLikedFears(), [fears], []);
+    const [createdFears] = useFetcher(itemService.getUserFears, [fears], []);
+    const [likedFears] = useFetcher(itemService.getUserLikedFears, [fears], []);
     const onShowFearsClick = (e) => {
         let button = e.target.id
         e.preventDefault();

@@ -6,6 +6,7 @@ const endpoints = {
     height: '/places/height',
     other: '/places/other',
     create: '/places/create',
+    top: '/places/topplaces',
     details: (placeId)=> `/places/details/${placeId}`,
     delete: (placeId)=> `/places/delete/${placeId}`,
     edit: (placeId)=> `/places/edit/${placeId}`,
@@ -29,26 +30,31 @@ export async function getHeight(){
 export async function getOther(){
     return await api.get(endpoints.other)
 };
-export async function details(id){
-    return await api.get(endpoints.details(id))
+export function topFears(){
+    return api.get(endpoints.top)
 };
-export async function createFear(data){
-    return await api.post(endpoints.create,data)
-};
-export async function editFear(id,data){
-    return await api.put(endpoints.edit(id),data)
-};
-export function deleteFear(id){
-    return api.del(endpoints.delete(id))
-};
-export function likeFear(data,id){
-    return api.put(endpoints.like(id),data)
-};
-
 export function getUserFears(){
     return api.get(endpoints.userFears)
 };
 export function getUserLikedFears(){
     return api.get(endpoints.userLikedFears)
 };
+export async function details(id){
+    return await api.get(endpoints.details(id))
+};
+export async function createFear(data){
+    return await api.post(endpoints.create,data)
+};
+export function deleteFear(id){
+    return api.del(endpoints.delete(id))
+};
+export async function editFear(id,data){
+    return await api.put(endpoints.edit(id),data)
+};
+export function likeFear(data,id){
+    return api.put(endpoints.like(id),data)
+};
+
+
+
 

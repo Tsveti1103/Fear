@@ -1,3 +1,4 @@
+from django.db.models import Count
 from rest_framework import generics as rest_generic_views, permissions
 from rest_framework.parsers import MultiPartParser, FormParser
 from server.api_data.models import Places
@@ -94,3 +95,12 @@ class ListUserLikedPlacesApiView(ListAllPlacesApiView):
         user = self.request.user.pk
         queryset = queryset.filter(likes__in=[user])
         return queryset
+
+
+class TopPlacesApiView(ListAllPlacesApiView):
+    queryset = Places.objects.annotate(q_count=Count('likes'))
+
+    def get_queryset(self):
+        queryset = self.queryset
+        queryset = queryset.order_by('-q_count')
+        return queryset[:3]

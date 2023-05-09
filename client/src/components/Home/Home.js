@@ -4,14 +4,16 @@ import cardStyles from '../commonStyles/AllPlaces.module.css';
 
 import { Link } from 'react-router-dom';
 import ReactLoading from 'react-loading';
+import * as itemService from "../../services/itemService";
 
-import { usePlaceContext } from '../../contexts/PlaceContext';
 import { useAuthContext } from '../../contexts/AuthContext';
 import Card from '../Places/Card/Card';
+import useFetcher from '../../hooks/useFetcher';
 
 export default function Home() {
-    const { topFears } = usePlaceContext();
     const { user } = useAuthContext();
+    const [topFears] = useFetcher(itemService.topFears);
+
     return (
         <>
             {user ?

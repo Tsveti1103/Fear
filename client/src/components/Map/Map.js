@@ -20,7 +20,7 @@ export default function Map() {
 }
 
 function CreateMap() {
-  const [fears] = useFetcher(itemService.getAllFears(), [])
+  const [fears] = useFetcher(itemService.getAllFears, [])
   const [selectedMarker, setSelectedMarker] = useState('')
   const center = useMemo(() => ({ lat: 42.69682798958126, lng: 23.317752732287403 }), []);
   const { user } = useAuthContext();
