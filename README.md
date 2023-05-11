@@ -41,7 +41,7 @@ Fear is web application for places where you can face your fears or just get a d
 
 
 ## :gear: Live demo
-[![Heroku Firebase](https://skillicons.dev/icons?i=heroku,firebase)](https://skillicons.dev)
+[![ASW Firebase](https://skillicons.dev/icons?i=aws,firebase)](https://skillicons.dev)
 
   https://fear-ts.web.app/
 
