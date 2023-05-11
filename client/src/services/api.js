@@ -1,8 +1,8 @@
 import { clearUserData, getAccessToken } from "./utils.js";
 
 const host = process.env.NODE_ENV === "development"
-?'http://localhost:8000'
-:'https://fear-server.herokuapp.com'
+?'localhost:8000'
+:'http://fear-ts.site/'
 
 async function request(method, url, data) {
     const options = {
