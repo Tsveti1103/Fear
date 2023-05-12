@@ -1,8 +1,6 @@
 import os
 from pathlib import Path
-import django_heroku
-import dj_database_url
-from decouple import config
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,7 +21,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
-    "corsheaders",
+    'corsheaders',
 
     'server.api_data',
     'server.api_auth',
@@ -39,7 +37,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 REST_FRAMEWORK = {
@@ -78,7 +75,6 @@ DATABASES = {
         'PORT': os.environ.get('DB_PORT'),
     }
 }
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -104,14 +100,15 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
-STATIC_ROOT = './staticfiles/'
-STATICFILES_STORAGE = 'whitenoise.storages.CompressedManifestStaticFilesStorage'
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'api_auth.AppUser'
 
-MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
+STATIC_ROOT = './staticfiles/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-django_heroku.settings(locals())
+if DEBUG is True:
+    MEDIA_URL = 'media/'
+    MEDIA_ROOT = BASE_DIR / 'mediafiles'
+else:
+    MEDIA_URL = 'media/'
+    MEDIA_ROOT = '/home/ubuntu/media/'
