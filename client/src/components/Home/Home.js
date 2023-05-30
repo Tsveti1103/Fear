@@ -20,10 +20,10 @@ export default function Home() {
                 <>
                     {topFears.length > 0 ?
                         <>
-                        <h1 className={styles.heading}>Top three most liked fears</h1>
-                        <ul className={cardStyles.cards}>
-                            {topFears.map(fear => <Card key={fear.id} fear={fear} />)}
-                        </ul>
+                            <h1 className={styles.heading}>Top three most liked fears</h1>
+                            <ul className={cardStyles.cards}>
+                                {topFears.map(fear => <Card key={fear.id} fear={fear} />)}
+                            </ul>
                         </>
                         :
                         <ReactLoading className={spinnerStyle.spinner} type="spinningBubbles" color='red' height="8rem" width="8rem" />
