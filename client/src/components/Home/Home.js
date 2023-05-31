@@ -12,18 +12,25 @@ import useFetcher from '../../hooks/useFetcher';
 
 export default function Home() {
     const { user } = useAuthContext();
-    const [topFears] = useFetcher(itemService.topFears);
-
+    const data = useFetcher(itemService.topFears);
+    const topFears = data[0]
+    const isLoad = data[2]
     return (
         <>
             {user ?
                 <>
-                    {topFears.length > 0 ?
+                    {isLoad ?
                         <>
-                            <h1 className={styles.heading}>Top three most liked fears</h1>
-                            <ul className={cardStyles.cards}>
-                                {topFears.map(fear => <Card key={fear.id} fear={fear} />)}
-                            </ul>
+                            {
+                                topFears.length > 0 ?
+                                    <>
+                                        <h1 className={styles.heading}>Top three most liked fears</h1>
+                                        <ul className={cardStyles.cards}>
+                                            {topFears.map(fear => <Card key={fear.id} fear={fear} />)}
+                                        </ul>
+                                    </>
+                                    : <p className={cardStyles.noFears}>No fears created</p>
+                            }
                         </>
                         :
                         <ReactLoading className={spinnerStyle.spinner} type="spinningBubbles" color='red' height="8rem" width="8rem" />

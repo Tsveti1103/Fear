@@ -2,13 +2,14 @@ import { useState } from 'react';
 
 import * as itemService from "../services/itemService";
 import useFetcher from './useFetcher';
+import { useEffect } from 'react';
 
-export default function useProfile(fears) {
+export default function useProfile() {
 
     const [showCreatedFears, setShowCreatedFears] = useState(false)
     const [showLikedFears, setShowLikedFears] = useState(false)
-    const [createdFears] = useFetcher(itemService.getUserFears, [fears], []);
-    const [likedFears] = useFetcher(itemService.getUserLikedFears, [fears], []);
+    const [createdFears, setCreatedFears, isCreatedLoad] = useFetcher(itemService.getUserFears);
+    const [likedFears, setLikedFears, isLikedLoad] = useFetcher(itemService.getUserLikedFears);
     const onShowFearsClick = (e) => {
         let button = e.target.id
         e.preventDefault();
@@ -20,6 +21,6 @@ export default function useProfile(fears) {
             setShowLikedFears(current => !current)
             setShowCreatedFears(false)
         }
-    }
-    return [showCreatedFears, showLikedFears, createdFears, likedFears, onShowFearsClick]
+    } 
+    return [showCreatedFears, showLikedFears, createdFears, likedFears, onShowFearsClick, isCreatedLoad,isLikedLoad ]
 }

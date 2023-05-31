@@ -12,10 +12,9 @@ import { usePaginate } from '../../../hooks/usePaginate';
 
 export default function Profile() {
     const { user } = useAuthContext();
-    const { fears } = usePlaceContext();
-    const [showCreatedFears, showLikedFears,createdFears, likedFears, onShowFearsClick] = useProfile(fears)
-    const createdF = usePaginate(createdFears)
-    const likedF = usePaginate(likedFears)
+    const [showCreatedFears, showLikedFears, createdFears, likedFears, onShowFearsClick, isCreatedLoad, isLikedLoad] = useProfile()
+    const createdF = usePaginate(createdFears, isCreatedLoad)
+    const likedF = usePaginate(likedFears, isLikedLoad)
     return (
         <div className={styles.container}>
             <div className={styles.icons}>
@@ -36,15 +35,15 @@ export default function Profile() {
             </div>
             <div className={styles.userFears} style={{ display: showCreatedFears ? 'flex' : 'none' }}>
                 <h1>Created Fears:</h1>
-                    <>
-                        {createdF}
-                    </>
+                <>
+                    {createdF}
+                </>
             </div>
             <div className={styles.userFears} style={{ display: showLikedFears ? 'flex' : 'none' }}>
                 <h1>Liked Fears:</h1>
-                    <>
-                        {likedF}
-                    </>
+                <>
+                    {likedF}
+                </>
             </div>
         </div>
     );

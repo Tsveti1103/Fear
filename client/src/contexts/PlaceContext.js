@@ -22,9 +22,9 @@ export const PlaceProvider = ({
       throw err
     }
   }
-  const delFears = (fearId) => {
-    itemService.deleteFear(fearId)
-    setFears(state => state.map(fear => fear.id !== fearId))
+  const delFears = async (fearId) => {
+    const result = await itemService.deleteFear(fearId)
+    setFears(state => [result,...state])
     document.body.classList.remove("modal-open");
     navigate('/fears/all');
 
@@ -33,10 +33,7 @@ export const PlaceProvider = ({
   const addFear = async (data) => {
     try {
       const result = await itemService.createFear(data)
-      setFears(state => [
-        ...state,
-        result,
-      ]);
+      setFears(state => [...state,result]);
       navigate('/fears/all');
     }
     catch (err) {

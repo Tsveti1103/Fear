@@ -8,11 +8,10 @@ import ReactLoading from 'react-loading';
 
 import Card from '../components/Places/Card/Card';
 
-export function usePaginate(fears) {
+export function usePaginate(fears, isLoad) {
     const [pageNumber, setPageNumber] = useState(0);
     const fearsPerPage = 3;
     const pagesVisited = pageNumber * fearsPerPage;
-
     const displayFears = fears
         .slice(pagesVisited, pagesVisited + fearsPerPage)
         .map((fear) => {
@@ -26,30 +25,34 @@ export function usePaginate(fears) {
     const changePage = ({ selected }) => {
         setPageNumber(selected);
     };
-
     return (
         <>
-            {fears.length > 0 ?
+            {isLoad ?
                 <>
-                    <ul className={cardStyles.cards}>
-                        {displayFears}
-                    </ul>
-                    <ReactPaginate
-                        previousLabel={"Previous"}
-                        nextLabel={"Next"}
-                        pageCount={pageCount}
-                        onPageChange={changePage}
-                        breakLabel={'...'}
-                        marginPagesDisplayed={1}
-                        pageRangeDisplayed={1}
-                        containerClassName={paginateStyles.paginationContainer}
-                        pageLinkClassName={paginateStyles.paginationLinks}
-                        pageClassName={paginateStyles.paginationListItem}
-                        previousLinkClassName={paginateStyles.previousBttn}
-                        nextLinkClassName={paginateStyles.nextBttn}
-                        disabledClassName={paginateStyles.paginationDisabled}
-                        activeClassName={paginateStyles.paginationActive}
-                    />
+                    {fears.length > 0 ?
+                        <>
+                            <ul className={cardStyles.cards}>
+                                {displayFears}
+                            </ul>
+                            <ReactPaginate
+                                previousLabel={"Previous"}
+                                nextLabel={"Next"}
+                                pageCount={pageCount}
+                                onPageChange={changePage}
+                                breakLabel={'...'}
+                                marginPagesDisplayed={1}
+                                pageRangeDisplayed={1}
+                                containerClassName={paginateStyles.paginationContainer}
+                                pageLinkClassName={paginateStyles.paginationLinks}
+                                pageClassName={paginateStyles.paginationListItem}
+                                previousLinkClassName={paginateStyles.previousBttn}
+                                nextLinkClassName={paginateStyles.nextBttn}
+                                disabledClassName={paginateStyles.paginationDisabled}
+                                activeClassName={paginateStyles.paginationActive}
+                            />
+                        </>
+                        : <p className={cardStyles.noFears}>No fears created</p>
+                    }
                 </>
                 :
                 <ReactLoading className={spinnerStyle.spinner} type="spinningBubbles" color='red' height="8rem" width="8rem" />
